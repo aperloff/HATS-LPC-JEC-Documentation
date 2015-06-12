@@ -1,0 +1,28 @@
+%!TEX root = ../2015_06_16-HATS-LPC-JEC.tex
+
+\subsection{Technical Details}
+\frame{
+	\frametitle{Jets and Jet Energy Corrections at CMS}
+	\begin{textblock}{12.3}(0.65,0.75)
+		\begin{figure}
+			\input{JEC2}
+			\label{fig:factorized_approach}
+		\end{figure}
+	\end{textblock}
+	\vspace*{2.45cm}
+	\begin{block}{Technical Details}
+		\begin{itemize}
+			\item CMSSW\_7\_4\_1
+			\item Samples:
+				\begin{itemize}
+					\item /QCD\_Pt-15TTo7000\_TuneZ2star-Flat\_13TeV\_pythia6/RunIISpring15DR74-Asympt50ns\_MCRUN2\_74\_V9A-v1/AODSIM
+					\item /QCD\_Pt-15TTo7000\_TuneZ2star-Flat\_13TeV\_pythia6/RunIISpring15DR74-AsymptNoPU\_MCRUN2\_74\_V9A-v1/AODSIM
+				\end{itemize}
+			\item Jet Collections:
+				\begin{itemize}
+					\item Anti-k$_{T}$, \{PF, PFchs, PUPPI\} Jets with $R=\{0.1-1.0\text{, steps of 0.1}\}$ 
+				\end{itemize}
+			\item First look at L1FastJet/L2Relative/L3Absolute corrections derived using both PU and non-PU samples
+		\end{itemize}
+	\end{block}
+}
