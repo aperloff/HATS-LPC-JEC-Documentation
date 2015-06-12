@@ -1,0 +1,75 @@
+Introduction
+	Why do we need JEC
+	What are JEC?
+		What are the levels/factorizations?
+		JER and uncertainties?
+	How do guarantee we are correcting what we thing we are correcting?
+	What jet collections?
+	What corrections are available?
+	PUPPI?
+
+Technical
+	What form do the corrections come in (text, SQLite, Database)?
+		Explain the text files
+		Explain what and SQLite files is
+		Explain how the database works and who (AlCa) is in charge
+Backend	Software
+	How do corrections in the DB get to the analyzer?
+
+User Software (How to apply corrections)
+	53X - Legacy
+		GEN-SIM-RECO/AODSIM
+			PFBRECO (us!) - take reco::candidates and recluster them using the JetProducers and then the JetCorrector class (add a jet collection to the sequence by hand)
+		PAT
+			pat::candidates to make a pat::jet, which is then corrected using JetCorrector class (addJetCollection/switchJetCollection)
+	72X - You're screwed!
+		GEN-SIM-RECO/AODSIM
+			PFBRECO works
+		PAT
+			pat works
+	73X
+		GEN-SIM-RECO/AODSIM
+			PFBRECO still works
+			JetToolbox - feed in either reco::PFCandidates which will be corrected and returned as pat::jets
+		PAT
+			PAT still works
+			JetToolbox - Can't use it unless you saved the reco::PFCandidates; otherwise feed in pat::PFCandidates and get pat::jets
+		MINIAOD
+			Jets are already corrected
+			JetToolbox - feed in pat::packedPFCandidates and get pat::jets
+			PatTools - addJetCollection/switchJetCollection
+	74X
+		GEN-SIM-RECO/AODSIM
+			PFBRECO
+			JetToolbox - as in 73X
+		PAT
+			PAT still works
+			JetToolbox - as in 73X
+			Jet Uncorrector/Recorrector - https://github.com/cms-sw/cmssw/pull/8288
+		MINIAOD
+			Jets are already corrected
+			Or you can uncorrect and recorrect them - Jet Uncorrector/Recorrector - https://github.com/cms-sw/cmssw/pull/8288
+			JetToolbox - works
+
+	If you're totally confused there are correction on-the-fly
+		In FWLite/C++
+		In the full framework
+
+setenv SCRAM_ARCH slc6_amd64_gcc491 *if using TCSH*
+source /cvmfs/cms.cern.ch/cmsset_default.csh *(if site uses cvmfs, like CERN or FNAL)*
+source /cvmfs/cms.cern.ch/crab3/crab.csh
+cmsrel CMSSW_7_4_2_patch1
+cd CMSSW_7_4_2_patch1/src/
+cmsenv
+git-cms-init
+git cms-addpkg CommonTools/PileupAlgos
+git cms-merge-topic nhanvtran:puppi-etadep-741-v1
+git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_74X
+mkdir Analysis
+cd Analysis
+git clone https://github.com/cms-jet/JMEDAS.git
+cd ..
+scram b -j8
+cd Analysis/JMEDAS/test
+cmsRun jmedas_pileupTreeMaker.py
+
