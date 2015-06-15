@@ -1,0 +1,24 @@
+%!TEX root = ../2015_06_16-HATS-LPC-JEC.tex
+
+\frame{
+	\begin{block}{}
+		\begin{center}
+			\shadowoffset{2pt}
+			\shadowcolor{tamugold}
+			\shadowtext{{\fontsize{30}{60}\selectfont \textbf{\textcolor{tamumaroon}{Backup Slides}}}}
+			\vspace{1.5mm}
+		\end{center}
+	\end{block}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\subsection{How do we guarantee we are correcting what we think we are correcting?}
+\frame{
+	\frametitle{How do we guarantee we are correcting what we think we are correcting?}
+	Maybe put this in the backup slides\\
+
+
+	Pileup - match same jet without PU to jet with PU. Litterally the only difference is the additional energy due to PU. Can't be anything else...maybe small matching uncertainty
+	L2L3 MCTruth - We in in jet pt as well as ref pt and eta so that we are independent of the jet pt spectrum. Otherwise our corrections would only be valid for sampels with the same pt spectrum (because the average energies would be different)
+	L5 - second order correction to L2L3, but binned in flavor. Same type of correction though (response based). Again, binned in jet pt, ref pt, and eta.
+	L2L3Res - make sure that we are measuring the dijet case by using an $\alpha<0.3$ cut. Then we extrapolate to the $\alpha=0$ value. This means that the pt of any third jet is really low. Then take the ratio of MC/data. Thus we are really measuring the difference of MC to data in the dijet case.
+}

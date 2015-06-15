@@ -1,28 +1,236 @@
 %!TEX root = ../2015_06_16-HATS-LPC-JEC.tex
 
-\subsection{Technical Details}
+\subsection{Why?}
 \frame{
-	\frametitle{Jets and Jet Energy Corrections at CMS}
-	\begin{textblock}{12.3}(0.65,0.75)
+	\frametitle{Introduction to Jet Energy Corrections in CMS}
+	\vspace*{-0.24cm}
+	\begin{columns}
+		\begin{column}{0.49\textwidth}
+			\begin{block}{Why do we need jet energy corrections?}
+					\begin{itemize}
+						\item For an abundance of reasons, the CMS detector does not perfectly measure the $p_{T}$ of most of the jets
+						\item Therefore it is not straightforward to translate the measured jet energy to the true particle or parton energy
+						\item Reasons:
+						\begin{itemize}
+							\item Pileup can add extra energy to the jets making their response ($p_{T}^{measured}/p_{T}^{actual}$) too high
+							\item The calorimeter response to particles is not constant in either $p_{T}^{RECO}$ or $\eta$
+							\item The detector response varies with jet flavor and parton flavor
+							\item etc.
+						\end{itemize}
+					\end{itemize}
+				\end{block}
+		\end{column}
+		\begin{column}{0.49\textwidth}
+			\includegraphics[width=\textwidth]{images/jetsatcmsand.png}\\
+			\includegraphics[width=\textwidth]{images/response.pdf}
+		\end{column}
+	\end{columns}
+}
+
+%---------------------------------------------------------------------------------------------------------------------------------------
+\subsection{What?}
+\frame{
+	\frametitle{What are the JECs?}
+	\vspace*{-0.24cm}
+	\begin{block}{Definition}
+		\begin{itemize}
+			\item The jet energy corrections (JEC) are a set of functions, constants, and tools that allows the proper mapping of the measured jet energy to the energy of the initiating parton
+		\end{itemize}
+	\end{block}
+	\vspace*{-0.15cm}
+	\begin{block}{Factorized Approach}
+		\begin{itemize}
+			\item CMS has adopted a factorized solution to the problem of jet energy corrections, where each level of correction takes care of a different effect
+			\begin{itemize}
+				\item Each level of correction is essentially the application of a scale factor (correction) to the jet four momentum
+				\item This scale factor depends on various event and jet related quantities ($\rho$, $p_{T}, \eta$, flavor, etc.)
+				\item The levels of correction are applied sequentially (the output of each step is the input to the next) and with fixed order
+			\end{itemize}
+		\end{itemize}
+	\end{block}
+	\vspace*{-0.15cm}
+	\begin{center}
+		\includegraphics[width=10cm]{images/jecs.png}
+	\end{center}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
+	\frametitle{JECs: A Factorized Approach}
+	\begin{textblock}{12.3}(0.25,0.75)
 		\begin{figure}
 			\input{JEC2}
 			\label{fig:factorized_approach}
 		\end{figure}
 	\end{textblock}
-	\vspace*{2.45cm}
-	\begin{block}{Technical Details}
+	\vspace*{2.4cm}
+	\begin{block}{Pileup (PU) Corrections}
 		\begin{itemize}
-			\item CMSSW\_7\_4\_1
-			\item Samples:
-				\begin{itemize}
-					\item /QCD\_Pt-15TTo7000\_TuneZ2star-Flat\_13TeV\_pythia6/RunIISpring15DR74-Asympt50ns\_MCRUN2\_74\_V9A-v1/AODSIM
-					\item /QCD\_Pt-15TTo7000\_TuneZ2star-Flat\_13TeV\_pythia6/RunIISpring15DR74-AsymptNoPU\_MCRUN2\_74\_V9A-v1/AODSIM
-				\end{itemize}
-			\item Jet Collections:
-				\begin{itemize}
-					\item Anti-k$_{T}$, \{PF, PFchs, PUPPI\} Jets with $R=\{0.1-1.0\text{, steps of 0.1}\}$ 
-				\end{itemize}
-			\item First look at L1FastJet/L2Relative/L3Absolute corrections derived using both PU and non-PU samples
+			\footnotesize
+			\item Pileup is the additional energy in a jet coming from all interactions \textbf{except} the primary vertex (PV) and it's underlying event (UE)
+			\item The goal of the pileup (\textbf{L1}) corrections is to remove the energy inside a jet coming from pile-up events
+			\begin{itemize}
+				\footnotesize
+				\item L1Offset - No longer used
+				\item L1FastJet - The current standard
+				\item Charged Hardron Subtraction - Remove the charged hadrons inside a jet which have a track coming from a pileup vertex
+				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block (more in section~\ref{})
+			\end{itemize}
+			\item Done on an {\color{blue}event-by-event} basis ($\rho$, $\mu$) and a {\color{red}jet-by-jet} basis ($p_{T}$, $\eta$, jet area)
+			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
 		\end{itemize}
 	\end{block}
 }
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
+	\frametitle{JECs: A Factorized Approach}
+	\begin{textblock}{12.3}(0.25,0.75)
+		\begin{figure}
+			\input{JEC2}
+			\label{fig:factorized_approach}
+		\end{figure}
+	\end{textblock}
+	\vspace*{2.4cm}
+	\begin{block}{MC-truth $\eta$ \& $p_{T}$ Corrections}
+		\begin{itemize}
+			\footnotesize
+			\item L2Relative \& L3Absolute corrections seek to make the jet response flat vs $p_{T}$ and $\eta$
+			\item During this step jets are corrected back to particle level so that the corrected jet $p_{T}$ is equal, on average, to the GenJet $p_{T}$
+			\item Every effort is taken to make these corrections independent of the jet $p_{T}$ spectrum
+			\item Derived on a QCD sample, but must be applicable to all physics processes
+		\end{itemize}			
+	\end{block}
+	\vspace*{-0.15cm}
+	\begin{alertblock}{Bombshell \#1}
+		\footnotesize
+		\begin{itemize}
+			\item The L2Relative \& L3Absolute corrections are derived in one step
+			\item They used to be separate, but we have combined them into one set of constants contained in the L2Relative payload
+			\item The L3Absolute payload now contains a multiplicative factor of one, but is still there for future use
+		\end{itemize}
+	\end{alertblock}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
+	\frametitle{JECs: A Factorized Approach}
+	\begin{textblock}{12.3}(0.25,0.75)
+		\begin{figure}
+			\input{JEC2}
+			\label{fig:factorized_approach}
+		\end{figure}
+	\end{textblock}
+	\vspace*{2.4cm}
+%	\begin{block}{Electromagnetic Energy Fraction Correction}
+%		\begin{itemize}
+%			\footnotesize
+%			\item The goal of the \textbf{defunct} L4 correction was to make the jet reponse uniform vs electromagnetic fraction
+%		\end{itemize}
+%	\end{block}
+%	\vspace*{-0.15cm}
+	\begin{block}{Jet Flavor Correction}
+		\begin{itemize}
+		\footnotesize
+		\item The goal of this step is to correct for the jet flavor dependence
+		\item The L1+L2+L3 corrections scale the energy of an ``average QCD jet" back to the energy of the corresponding generator level particle jet
+		\begin{itemize}
+			\footnotesize
+			\item Application of the generic L1+L2+L3 corrections to jets with a flavor composition different than that of QCD jets leads to an over- or under-corection
+		\end{itemize}
+		\item L5Flavor corrections are applied on top of the default L1+L2+L3 jet correction and corrects the jet energy back to particle level
+			\begin{itemize}
+				\footnotesize
+				\item L5 corrections act at the particle level. If corrections back to the parton level are required, the L1+L2+L3+L5 corrections can be combined with the L7 corrections
+				\item L5 corrections provide corrections only relative to the ``typical" mix of flavors present in the sample that they have been derived from
+				\item Currently derived on QCD events, but can also be made from top-quark pair events
+			\end{itemize}
+		\end{itemize}
+	\end{block}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
+	\frametitle{JECs: A Factorized Approach}
+	\begin{textblock}{12.3}(0.25,0.75)
+		\begin{figure}
+			\input{JEC2}
+			\label{fig:factorized_approach}
+		\end{figure}
+	\end{textblock}
+	\vspace*{2.4cm}
+	\begin{block}{Parton Jet Correction}
+		\begin{itemize}
+			\item The optional L7 parton correction is applied on top of the default L1+L2+L3 (L5) correction and corrects back to the parton level
+			\item This means that the corrected jet $p_{T}$ is equal to the originating parton $p_{T}$, on average
+			\item More details \href{https://twiki.cern.ch/twiki/bin/view/CMS/IntroToJEC\#L7_Parton_Jet_Correction}{\color{blue}{here}}.
+		\end{itemize}
+	\end{block}
+	\vspace*{-0.15cm}
+	\begin{block}{Residuals Corrections}
+		\begin{itemize}
+			\item The residual calibration of data:.
+			\begin{itemize}
+				\item First, the MC Truth L2L3 JEC calibration is applied, which takes care of the bulk of the energy response.
+				\item Second, a small residual calibration ($\eta$ and $p_{T}$ dependent) is applied which fixes the small differences between data and MC.
+			\end{itemize}
+		\end{itemize}
+	\end{block}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
+\frametitle{Mandatory Jet Energy Corrections at CMS}
+%\includegraphics[width=10cm]{images/jecs.png}
+\begin{itemize}
+\item The minimum correction levels to be applied on any CMS analysis using Monte Carlo and Data are:
+\end{itemize}
+
+\begin{block}{Monte Carlo}
+L1(Pile Up) + L2(Relative) + L3(Absolute)
+\end{block}
+
+\begin{block}{Data}
+L1(Pile Up) + L2(Relative) + L3(Absolute) + L2L3 Residuals
+\end{block}
+
+\begin{itemize}
+\item Any analysis might place higher correction levels if necessary and available. User can check \href{https://twiki.cern.ch/twiki/bin/view/CMS/JECDataMC}{https://twiki.cern.ch/twiki/bin/view/CMS/JECDataMC} to learn about the ``Recommended Jet Energy Corrections and Uncertainties for Data and MC".
+\end{itemize}
+
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\subsubsection{JES Uncertainty Sources}
+\frame{
+\frametitle{JES and Uncertainties}
+\begin{block}{Description}
+\begin{itemize}
+\item The JEC uncertainty sources provide detailed information on JEC uncertainties for use in statistical data analysis. The sources are fully uncorrelated between themselves, but describe JEC variations that are fully correlated within a given source.
+\item FIX ME: Should we include how uncertainties are calculated? How they are applied? Sources?
+\end{itemize}
+\end{block}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Collections}
+\frame{
+	\frametitle{Jet Collections Supported by the JERC Group}
+	\begin{itemize}
+		\item Clustering algorithms:
+		\begin{itemize}
+			\item {\color{red}Anti-k$_{T}$}
+			\item Cambridge/Aachen - No JEC yet, but might be supported in future if necessary
+		\end{itemize}
+		\item Cone sizes:
+		\begin{itemize}
+			\item {\color{red}$R=\{n/10 : 1{\leqslant}n{\leqslant}10\}$}
+		\end{itemize}
+		\item Jet types:
+		\begin{itemize}
+			\item {\color{red}PF} - Still in use
+			\item {\color{red}PF+CHS} - Default
+			\item {\color{red}PF+PUPPI} - Being tested now
+			\item PFClusterJet - Coming soon?
+			\item {\color{red}Jet Plus Track (JPT)} - Provided by Olga Kodolova
+		\end{itemize}
+	\end{itemize}
+	\textbf{Note}: Items in {\color{red}red} will be available for use in RunII. This amounts to \textbf{32} different payloads.
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------------------------------------------
+\subsection{PUPPI}
+%---------------------------------------------------------------------------------------------------------------------------------------

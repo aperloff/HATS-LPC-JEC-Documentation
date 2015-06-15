@@ -1,0 +1,17 @@
+%!TEX root = ../2015_06_16-HATS-LPC-JEC.tex
+
+\frame{
+	\frametitle{Conclusion}
+	\vspace*{-0.24cm}
+	
+	\begin{block}{Summary}
+		\begin{itemize}
+			\item 
+		\end{itemize}
+	\end{block}
+	\begin{alertblock}{In Progress...}
+		\begin{itemize}
+			\item 
+		\end{itemize}
+	\end{alertblock}
+}
