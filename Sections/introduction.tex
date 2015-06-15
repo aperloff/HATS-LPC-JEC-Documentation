@@ -96,6 +96,43 @@
 		\end{figure}
 	\end{textblock}
 	\vspace*{2.4cm}
+	\begin{block}{Pileup (PU) Corrections}
+		\begin{itemize}
+			\footnotesize
+			\item Pileup is the additional energy in a jet coming from all interactions \textbf{except} the primary vertex (PV) and it's underlying event (UE)
+			\item The goal of the pileup (\textbf{L1}) corrections is to remove the energy inside a jet coming from pile-up events
+			\begin{itemize}
+				\footnotesize
+				\item L1Offset - No longer used
+				\item L1FastJet - The current standard
+				\item Charged Hardron Subtraction - Remove the charged hadrons inside a jet which have a track coming from a pileup vertex
+				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block (more in section~\ref{})
+			\end{itemize}
+			\item Done on an {\color{blue}event-by-event} basis ($\rho$, $\mu$) and a {\color{red}jet-by-jet} basis ($p_{T}$, $\eta$, jet area)
+			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
+		\end{itemize}
+	\end{block}
+	\begin{textblock}{12.3}(0.25,2.0)
+		\begin{figure}
+			\includegraphics[width=0.5\textwidth]{images/OffMeantnpuRef_BB_ak4pfchs_beforeL1.pdf}
+			\includegraphics[width=0.5\textwidth]{images/OffMeantnpuRef_BB_ak4pfchs_afterL1.pdf}
+			\label{fig:OffMeantnpuRef}
+		\end{figure}
+	\end{textblock}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
+	\frametitle{JECs: A Factorized Approach}
+	\begin{textblock}{12.3}(0.25,0.75)
+		\begin{figure}
+			\scalebox{.9}{
+			%	\input{images/JEC_levels}
+				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
+			}
+			\label{fig:factorized_approach}
+		\end{figure}
+	\end{textblock}
+	\vspace*{2.4cm}
 	\begin{block}{MC-truth $\eta$ \& $p_{T}$ Corrections}
 		\begin{itemize}
 			\footnotesize
