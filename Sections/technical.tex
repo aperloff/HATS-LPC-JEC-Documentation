@@ -1,7 +1,8 @@
 %!TEX root = ../2015_06_16-HATS-LPC-JEC.tex
 
 \frame{
-\frametitle{What form do the corrections come in? Text File}
+\frametitle{What form do the corrections come in?}
+\framesubtitle{Text File}
 \vspace*{0.3cm}
 	%\begin{textblock}{14.5}(0.0,0.7)
 		\begin{center}
@@ -24,3 +25,60 @@
 		\end{itemize}
 	\end{block}
 }
+%-----------------------------------------------------------------------------------------------------------
+\frame{
+\frametitle{What form do the corrections come in?}
+\framesubtitle{Global Tag}
+\begin{block}{Global Tag}
+\begin{itemize}
+\item Conditions data are defined in the Offline Conditions Database (ORCOF), which is read in CMSSW applications via Frontier caching servers.
+\item The set of dataset tags which together define the offline conditions data are collected together in a \textbf{Global Tag (GT)}, which is itself stored in the database.
+\item How to connect to a GT:
+\end{itemize} 
+\end{block}
+
+\includegraphics[width=10cm]{images/globaltag.png}
+
+\begin{alertblock}{Note:}
+\begin{itemize}
+\item GT's are independent of CMSSW release, therefore different GT's can be used within a given CMSSW release.
+\end{itemize}
+\end{alertblock}
+
+}
+%-----------------------------------------------------------------------------------------------------------
+\frame{
+\frametitle{What form do the corrections come in?}
+\framesubtitle{How to connect to a local sql file.}
+\begin{columns}
+\begin{column}{3.5cm}
+\begin{block}{}
+The recommended way of accessing JEC is with a global tag. The SQLlite file option is mainly used in the initial testing phase in preparation of a global tag.
+\end{block}
+\end{column}
+\begin{column}{8.5cm}
+\includegraphics[width=8.5cm]{images/sqlfile.png}
+\end{column}
+\end{columns}
+
+}
+%-----------------------------------------------------------------------------------------------------------
+\frame{
+\frametitle{What form do the corrections come in?}
+\framesubtitle{How to connect to a local sql file.}
+
+\includegraphics[width=11cm]{images/sql2.png}
+
+\begin{block}{}
+\begin{itemize}
+\item When using a local SQL file, \textbf{es$\_$prefer} should be added to the process chain in the cfg file.
+\item In this case, an \textbf{es$\_$prefer} indicates that whatever is defined in \textbf{es$\_$source} takes precedence over any other source for the condition object (in particular, the global tag).
+\end{itemize}
+\end{block}
+
+}
+
+
+
+
+
