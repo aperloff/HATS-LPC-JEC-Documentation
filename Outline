@@ -22,7 +22,7 @@ User Software (How to apply corrections)
 			PFBRECO (us!) - take reco::candidates and recluster them using the JetProducers and then the JetCorrector class (add a jet collection to the sequence by hand)
 		PAT
 			pat::candidates to make a pat::jet, which is then corrected using JetCorrector class (addJetCollection/switchJetCollection)
-	72X - You're screwed!
+	72X - Uh Oh!
 		GEN-SIM-RECO/AODSIM
 			PFBRECO works
 		PAT
@@ -54,7 +54,9 @@ User Software (How to apply corrections)
 	If you're totally confused there are correction on-the-fly
 		In FWLite/C++
 		In the full framework
-
+#
+#setup
+#
 setenv SCRAM_ARCH slc6_amd64_gcc491 *if using TCSH*
 source /cvmfs/cms.cern.ch/cmsset_default.csh *(if site uses cvmfs, like CERN or FNAL)*
 source /cvmfs/cms.cern.ch/crab3/crab.csh
@@ -62,6 +64,10 @@ cmsrel CMSSW_7_4_2_patch1
 cd CMSSW_7_4_2_patch1/src/
 cmsenv
 git-cms-init
+
+#
+#part 1
+#
 git cms-addpkg CommonTools/PileupAlgos
 git cms-merge-topic nhanvtran:puppi-etadep-741-v1
 git clone git@github.com:cms-jet/JetToolbox.git JMEAnalysis/JetToolbox -b jetToolbox_74X
@@ -69,7 +75,50 @@ mkdir Analysis
 cd Analysis
 git clone https://github.com/cms-jet/JMEDAS.git
 cd ..
-scram b -j8
+scram b -j 8
 cd Analysis/JMEDAS/test
-cmsRun jmedas_pileupTreeMaker.py
+voms-proxy-init -voms cms --valid 192:00
+
+#run with AODSIM + jetToolbox
+#run with MiniAODSIM + jetToolbox
+#run with MiniAODSIM + PAT
+#in all of these cases you don't need to worry about double correcting because you are reclustering jets
+cmsRun jmedas_treeMaker.py
+
+#
+#part 2
+#
+#need to worry about double correcting if grabbing jets from MiniAODSIM file directly
+#https://github.com/cms-sw/cmssw/pull/8288
+git-cms-addPkg PhysicsTools/PatAlgos
+cd PhysicsTools/PatAlgos/test/
+cmsRun update_jets_from_MiniAOD.py
+
+#
+#part 3
+#
+#JEC on the fly
+cmsRun jmedas_fwlite.py
+
+#
+#part 4
+#
+#run with AODSIM + PFBRECO
+#not much worry about double correcting because AODSIM jets, or reclustered jets, do not have corrections already applied
+#https://github.com/cms-jet/JetMETAnalysis
+cd CMSSW_7_4_2_patch1/src/
+git clone git@github.com:cms-jet/JetMETAnalysis.git
+scram b -j 8
+cd JetMETAnalysis/JetAnalyzers/test/
+cmsRun run_JRA_cfg.py
+
+#
+#part 5
+#
+#https://twiki.cern.ch/twiki/bin/view/CMS/JetResolution#JER_Scaling_factors_and_Uncertai
+#with JER
+#with Uncertainties
+#with both?
+#not shown here is how to apply the uncertainties for the JER factors
+#Go back to jmedas_treeMaker.py and turn on either JER, uncertainties, or both
 
