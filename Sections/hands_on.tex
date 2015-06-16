@@ -108,6 +108,7 @@
 		\item Change the jet collections and the correction levels
 		\item \textbf{Hint}: For no corrections it seems you need to include just the L3Absolute corrections
 		\item Explor the trees you make with this program
+		\item If you have AK4PF and AK4PFchs in your tree you can use the plots\_jec\_hats\_1.py to make some distributions
 	\end{itemize}
 \end{block}
 
@@ -141,7 +142,7 @@
 	\framesubtitle{Jet corrections on-the-fly}
 
 \begin{Verbatim}[label={Exercise 3}]
-\textcolor{Orange}{cmsRun jmedas_fwlite.py}
+\textcolor{Orange}{cmsRun Analysis/JMEDAS/test/jmedas_fwlite.py}
 \end{Verbatim}
 
 \begin{block}{}
@@ -189,7 +190,7 @@
 \begin{Verbatim}[label={Exercise 5}]
 # Go back to jmehats_JEC.py and turn on either JER, uncertainties, or both
 # JER also has the option to scale 1 sigma up or down from the nominal values
-\textcolor{Orange}{cmsRun jmedas_treeMaker.py}
+\textcolor{Orange}{cmsRun jmedas_JEC.py}
 \end{Verbatim}
 
 \begin{block}{}
