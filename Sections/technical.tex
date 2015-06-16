@@ -1,5 +1,26 @@
 %!TEX root = ../2015_06_16-HATS-LPC-JEC.tex
 
 \frame{
+\frametitle{What form do the corrections come in? Text File}
+\vspace*{0.3cm}
+	%\begin{textblock}{14.5}(0.0,0.7)
+		\begin{center}
+%			\scalebox{.9}{
+				%\input{images/JEC_levels}
+				\includegraphics[width=\textwidth]{images/txtfile.png}
+%			}
+		\end{center}
+%	\end{textblock}
 	
+	\begin{block}{How to read the JEC text files?}
+		\begin{itemize}
+		\item The \textbf{top row} establishes the definitions for the parameters to follow, the correction factor and the correction level being applied.
+		\item The \textbf{first two columns} are the $\eta$ bins.
+		\item The next column tells you how many numbers will follow it (in this case 9).
+		\item The next number is the lower bound of the $\rho$, $p_{T}$ and jet area bins (the upper bound is the third number after that).
+		\item Intsructions on how to apply the Jet Energy Corrections from a text file in FWLite environment. \\ 
+		\footnotesize
+		\href{https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookJetEnergyCorrections}{https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookJetEnergyCorrections}
+		\end{itemize}
+	\end{block}
 }

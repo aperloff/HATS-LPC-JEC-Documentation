@@ -56,10 +56,10 @@
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
 	\frametitle{JECs: A Factorized Approach}
-	\begin{textblock}{12.3}(0.25,0.75)
+	\begin{textblock}{12.3}(0.25,0.7)
 		\begin{figure}
 			\scalebox{.9}{
-			%	\input{images/JEC_levels}
+				%\input{images/JEC_levels}
 				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
 			}
 			\label{fig:factorized_approach}
@@ -106,7 +106,7 @@
 				\item L1Offset - No longer used
 				\item L1FastJet - The current standard
 				\item Charged Hardron Subtraction - Remove the charged hadrons inside a jet which have a track coming from a pileup vertex
-				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block (more in section~\ref{})
+				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block (more in section~\ref{puppy})
 			\end{itemize}
 			\item Done on an {\color{blue}event-by-event} basis ($\rho$, $\mu$) and a {\color{red}jet-by-jet} basis ($p_{T}$, $\eta$, jet area)
 			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
@@ -117,6 +117,156 @@
 			\includegraphics[width=0.5\textwidth]{images/OffMeantnpuRef_BB_ak4pfchs_beforeL1.pdf}
 			\includegraphics[width=0.5\textwidth]{images/OffMeantnpuRef_BB_ak4pfchs_afterL1.pdf}
 			\label{fig:OffMeantnpuRef}
+		\end{figure}
+	\end{textblock}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
+	\frametitle{JECs: A Factorized Approach}
+	\begin{textblock}{12.3}(0.25,0.75)
+		\begin{figure}
+			\scalebox{.9}{
+			%	\input{images/JEC_levels}
+				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
+			}
+			\label{fig:factorized_approach}
+		\end{figure}
+	\end{textblock}
+	\vspace*{2.4cm}
+	\begin{block}{Pileup (PU) Corrections}
+		\begin{itemize}
+			\footnotesize
+			\item Pileup is the additional energy in a jet coming from all interactions \textbf{except} the primary vertex (PV) and it's underlying event (UE)
+			\item The goal of the pileup (\textbf{L1}) corrections is to remove the energy inside a jet coming from pile-up events
+			\begin{itemize}
+				\footnotesize
+				\item L1Offset - No longer used
+				\item L1FastJet - The current standard
+				\item Charged Hardron Subtraction - Remove the charged hadrons inside a jet which have a track coming from a pileup vertex
+				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block (more in section~\ref{puppy})
+			\end{itemize}
+			\item Done on an {\color{blue}event-by-event} basis ($\rho$, $\mu$) and a {\color{red}jet-by-jet} basis ($p_{T}$, $\eta$, jet area)
+			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
+		\end{itemize}
+	\end{block}
+	\begin{textblock}{12.3}(0.25,2.0)
+		\begin{figure}
+			\includegraphics[width=0.5\textwidth]{images/OffMeantnpuRef_BB_ak4pfchs_beforeL1.pdf}
+			\includegraphics[width=0.5\textwidth]{images/OffMeantnpuRef_BB_ak4pfchs_afterL1.pdf}
+			\label{fig:OffMeantnpuRef}
+		\end{figure}
+	\end{textblock}
+		\begin{textblock}{12.3}(0.25,2.0)
+		\begin{figure}
+			\includegraphics[width=0.5\textwidth]{images/Can0_noPreliminary.pdf}
+			\includegraphics[width=0.5\textwidth]{images/Can1_noPreliminary.pdf}
+		\end{figure}
+	\end{textblock}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\subsection{PUPPI}
+\label{puppi}
+\frame{
+	\frametitle{PUPPI: Pileup Per Particle Identification}
+	\vspace*{-0.24cm}
+	
+	\begin{columns}
+	\begin{column}{0.55\textwidth}
+	\begin{block}{PUPPI}
+		\begin{itemize}
+			\footnotesize
+			\item New algorithm that removes pileup particles from inside a jet.
+			\item Mitigates pileup on a "per particle basis" using several handles available such as: $\rho$ (pileup energy density measured per event), charged tracks from the hard scatter and pileup vertices, etc.
+			\item By applying corrections at the particle level, before jet clustering, one can also perform jet four-vector, resulting in a better detector resolution.
+		\end{itemize}
+	\end{block}
+	\end{column}
+	\begin{column}{5cm}
+	\includegraphics[width=5cm]{images/puppi.png}
+	\end{column}
+	\end{columns}
+	\vspace*{0.3cm}
+	\begin{columns}
+	\begin{column}{3.5cm}
+	\includegraphics[width=3.5cm]{images/OffMeannpuRefWithSum_BB_ak4pf.pdf}
+	\end{column}
+	\begin{column}{3.5cm}
+	\includegraphics[width=3.5cm]{images/OffMeannpuRefWithSum_BB_ak4pfchs.pdf}
+	\end{column}
+	\begin{column}{3.5cm}
+	\includegraphics[width=3.5cm]{images/OffMeannpuRefWithSum_BB_ak4puppi.pdf}
+	\end{column}
+	\end{columns}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
+	\frametitle{JECs: A Factorized Approach}
+	\begin{textblock}{12.3}(0.25,0.75)
+		\begin{figure}
+			\scalebox{.9}{
+			%	\input{images/JEC_levels}
+				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
+			}
+			\label{fig:factorized_approach}
+		\end{figure}
+	\end{textblock}
+	\vspace*{2.4cm}
+	\begin{block}{MC-truth $\eta$ \& $p_{T}$ Corrections}
+		\begin{itemize}
+			\footnotesize
+			\item L2Relative \& L3Absolute corrections seek to make the jet response flat vs $p_{T}$ and $\eta$
+			\item During this step jets are corrected back to particle level so that the corrected jet $p_{T}$ is equal, on average, to the GenJet $p_{T}$
+			\item Every effort is taken to make these corrections independent of the jet $p_{T}$ spectrum
+			\item Derived on a QCD sample, but must be applicable to all physics processes
+		\end{itemize}			
+	\end{block}
+	\vspace*{-0.15cm}
+	\begin{alertblock}{Bombshell \#1}
+		\footnotesize
+		\begin{itemize}
+			\item The L2Relative \& L3Absolute corrections are derived in one step
+			\item They used to be separate, but we have combined them into one set of constants contained in the L2Relative payload
+			\item The L3Absolute payload now contains a multiplicative factor of one, but is still there for future use
+		\end{itemize}
+	\end{alertblock}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
+	\frametitle{JECs: A Factorized Approach}
+	\begin{textblock}{12.3}(0.25,0.75)
+		\begin{figure}
+			\scalebox{.9}{
+			%	\input{images/JEC_levels}
+				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
+			}
+			\label{fig:factorized_approach}
+		\end{figure}
+	\end{textblock}
+	\vspace*{2.4cm}
+	\begin{block}{MC-truth $\eta$ \& $p_{T}$ Corrections}
+		\begin{itemize}
+			\footnotesize
+			\item L2Relative \& L3Absolute corrections seek to make the jet response flat vs $p_{T}$ and $\eta$
+			\item During this step jets are corrected back to particle level so that the corrected jet $p_{T}$ is equal, on average, to the GenJet $p_{T}$
+			\item Every effort is taken to make these corrections independent of the jet $p_{T}$ spectrum
+			\item Derived on a QCD sample, but must be applicable to all physics processes
+		\end{itemize}			
+	\end{block}
+	\vspace*{-0.15cm}
+	\begin{alertblock}{Bombshell \#1}
+		\footnotesize
+		\begin{itemize}
+			\item The L2Relative \& L3Absolute corrections are derived in one step
+			\item They used to be separate, but we have combined them into one set of constants contained in the L2Relative payload
+			\item The L3Absolute payload now contains a multiplicative factor of one, but is still there for future use
+		\end{itemize}
+	\end{alertblock}
+	
+	\begin{textblock}{12.3}(0.25,2.0)
+		\begin{figure}
+			\includegraphics[width=0.5\textwidth]{images/Can1_noPreliminary.pdf}
+			\includegraphics[width=0.5\textwidth]{images/Can2_noPreliminary.pdf}
+			\label{fig:closurel1l2l3}
 		\end{figure}
 	\end{textblock}
 }
@@ -151,6 +301,19 @@
 			\item The L3Absolute payload now contains a multiplicative factor of one, but is still there for future use
 		\end{itemize}
 	\end{alertblock}
+	
+	\begin{textblock}{12.3}(0.25,2.0)
+		\begin{figure}
+			\includegraphics[width=0.5\textwidth]{images/Can1_noPreliminary.pdf}
+			\includegraphics[width=0.5\textwidth]{images/Can2_noPreliminary.pdf}
+			\label{fig:closurel1l2l3}
+		\end{figure}
+	\end{textblock}
+		\begin{textblock}{12.3}(0.25,2.0)
+		\begin{figure}
+			\includegraphics[width=0.5\textwidth]{images/ClosureVsPt_Overview2_ak5pfchsl1_noPreliminary.pdf}
+		\end{figure}
+	\end{textblock}
 }
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
@@ -204,14 +367,59 @@
 		\end{figure}
 	\end{textblock}
 	\vspace*{2.4cm}
-	\begin{block}{Parton Jet Correction}
+%	\begin{block}{Electromagnetic Energy Fraction Correction}
+%		\begin{itemize}
+%			\footnotesize
+%			\item The goal of the \textbf{defunct} L4 correction was to make the jet reponse uniform vs electromagnetic fraction
+%		\end{itemize}
+%	\end{block}
+%	\vspace*{-0.15cm}
+	\begin{block}{Jet Flavor Correction}
 		\begin{itemize}
-			\item The optional L7 parton correction is applied on top of the default L1+L2+L3 (L5) correction and corrects back to the parton level
-			\item This means that the corrected jet $p_{T}$ is equal to the originating parton $p_{T}$, on average
-			\item More details \href{https://twiki.cern.ch/twiki/bin/view/CMS/IntroToJEC\#L7_Parton_Jet_Correction}{\color{blue}{here}}.
+		\footnotesize
+		\item The goal of this step is to correct for the jet flavor dependence
+		\item The L1+L2+L3 corrections scale the energy of an ``average QCD jet" back to the energy of the corresponding generator level particle jet
+		\begin{itemize}
+			\footnotesize
+			\item Application of the generic L1+L2+L3 corrections to jets with a flavor composition different than that of QCD jets leads to an over- or under-corection
+		\end{itemize}
+		\item L5Flavor corrections are applied on top of the default L1+L2+L3 jet correction and corrects the jet energy back to particle level
+			\begin{itemize}
+				\footnotesize
+				\item L5 corrections act at the particle level. If corrections back to the parton level are required, the L1+L2+L3+L5 corrections can be combined with the L7 corrections
+				\item L5 corrections provide corrections only relative to the ``typical" mix of flavors present in the sample that they have been derived from
+				\item Currently derived on QCD events, but can also be made from top-quark pair events
+			\end{itemize}
 		\end{itemize}
 	\end{block}
-	\vspace*{-0.15cm}
+	
+		\begin{textblock}{12.3}(0.25,2.0)
+		\begin{figure}
+			\includegraphics[width=0.5\textwidth]{images/L5AbsCorGraphs.pdf}
+			\label{fig:flavor}
+		\end{figure}
+	\end{textblock}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
+	\frametitle{JECs: A Factorized Approach}
+	\begin{textblock}{12.3}(0.25,0.75)
+		\begin{figure}
+			\scalebox{.9}{
+			%	\input{images/JEC_levels}
+				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
+			}
+			\label{fig:factorized_approach}
+		\end{figure}
+	\end{textblock}
+	\vspace*{2.4cm}
+	\begin{block}{Parton Jet Correction}
+		\begin{itemize}
+			\item The optional L7 parton correction is applied on top of the default L1+L2+L3 (L5) correction and corrects back to the parton level.
+			\item This means that the corrected jet $p_{T}$ is equal to the originating parton $p_{T}$, on average More details \href{https://twiki.cern.ch/twiki/bin/view/CMS/IntroToJEC\#L7_Parton_Jet_Correction}{\color{blue}{here}}.
+		\end{itemize}
+	\end{block}
+
 	\begin{block}{Residuals Corrections}
 		\begin{itemize}
 			\item The residual calibration of data:.
@@ -224,36 +432,305 @@
 }
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
+	\frametitle{Relative Corrections for Data}
+	\framesubtitle{L2Residual Corrections}
+	\vspace*{-0.24cm}
+	\begin{columns}[T]
+		\column{0.4\textwidth}
+			%\begin{textblock}{2.5}(0.25,2.0){\color{red}\scriptsize{(Dijet events)}}\end{textblock}
+			\vspace*{-0.4cm}
+			\begin{figure}[T]
+				\centering
+				\includegraphics[width=0.9\textwidth]{images/RelativeCalibration.png}%
+				\vspace*{-0.4cm}
+				%\caption{\footnotesize{Sketch by H. Kirschenmann}}
+				\label{fig:RelativeCalibration}
+			\end{figure}
+			\vspace*{-0.1cm}
+			\begin{block}{Updates in 2014}
+				\begin{itemize}
+					\footnotesize
+					\item Many mprovements here
+					\item The new JER constants have half the uncertainty of what they had before
+					\item Separate constants for outer end cap (very large data/MC difference) and HF (very small data/MC difference)
+					\item Due to improved methods, study of systematics, and better use of statistics
+				\end{itemize}
+			\end{block}
+		\column{0.56\textwidth}
+		\vspace*{-0.4cm}
+		\begin{figure}[T]
+			\centering
+			\includegraphics[width=6.5cm]{images/L2Residuals.png}%
+			\label{fig:L2Residual}
+		\end{figure}
+	\end{columns}
+}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
+	\frametitle{Corrections to Scale In Barrel Region}
+	\framesubtitle{L3Residual Corrections}
+	\vspace*{-0.24cm}
+	\begin{columns}[T]
+		\column{0.4\textwidth}
+			%\begin{textblock}{2.5}(0.25,1.5){\color{red}\scriptsize{$Z\left(\mu\mu\right)+jet$\\$Z\left(ee\right)+jet$\\$\gamma+jet$\\(multijet events)}}\end{textblock}
+			\vspace*{-0.4cm}
+			\begin{figure}[T]
+				\centering
+				\includegraphics[width=0.67\textwidth]{images/unc2.png}%
+				\vspace*{-0.4cm}
+%				\caption{\footnotesize{Sketch by H. Kirschenmann}}
+				\label{fig:AbsoluteCalibration}
+			\end{figure}
+			\vspace*{0.5cm}
+
+			\begin{block}{Updates in 2014}
+			\begin{itemize}
+				\footnotesize
+				\item A preliminary version of the new residuals was already used by the Top group for their latest measurement (reported at Top2014)
+				\begin{itemize}
+					\scriptsize
+					\item Changed relative to that version very small
+				\end{itemize} 
+				\item The difference relative to the old data corrections (residuals) is about $1\sigma$ at low $p_{T}$ and only slightly more than $1\sigma$ at high $p_{T}$
+			\end{itemize}
+			\end{block}
+		\column{0.56\textwidth}
+		\vspace*{-0.4cm}
+		\begin{figure}[T]
+				\centering
+				\includegraphics[width=\textwidth]{images/unc.png}%
+				\label{fig:L3Residual}
+		\end{figure}
+		\vspace*{-0.6cm}
+		%\begin{figure}[T]
+		%		\centering
+		%		\includegraphics[width=0.5\textwidth]{2014/extrapolation.pdf}%
+		%		\includegraphics[width=0.5\textwidth]{2014/ratio_extrapolation.pdf}%
+		%		\label{fig:L3ResidualNew}
+		%\end{figure}
+	\end{columns}
+	%\begin{textblock}{5.90}(8,3.0){\color{red}Old}\end{textblock}
+	%\begin{textblock}{5.90}(8,7.2){\color{red}New}\end{textblock}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Uncertainties}
+\frame{
+	\frametitle{Updates to the Uncertainties}
+	\vspace*{-0.24cm}
+	\begin{block}{Updates to the Systematics}
+		\begin{itemize}
+			\small
+			\item  {\color{red}\textbf{PileUpPtRef (new)}}
+			\begin{itemize}
+				\footnotesize
+				\item AK5PFchs after global L3Residual fit ($100\%\rightarrow25\%$)
+				\item Others: Ò$60\%$Ó relative to AK5PFchs Ò$35\%$Ó
+			\end{itemize}
+			\item {\color{red}\textbf{PileUpPt[BB,EC1,EC2,HF] (modified)}}
+			\begin{itemize}
+				\footnotesize
+				\item PileUpPt with respect to PileUpPtRef at $|\eta|<1.3$ after $p_{T}$-dependent (log-linear) L2Residual fit
+			\end{itemize}
+			\item  {\color{red}\textbf{PileUpMuZero (new, optional)}}
+			\begin{itemize}
+				\footnotesize
+				\item Optional ÒPileUpPtÓ for $<\mu>=0$ ($2.76\unit{TeV}$ data)
+				\item Mis-calibration from L2L3Residual at $<\mu>=20$
+			\end{itemize}
+			\item PileUpEnvelope (new, optional)
+			\begin{itemize}
+				\footnotesize
+				\item Old-style PileUpPt systematic ($60\%$)
+			\end{itemize}
+			\item  {\color{red}\textbf{TimePt, TimeRunX (new); TimeEta=Time(old)}}
+			\begin{itemize}
+				\footnotesize
+				\item TimePt: L3Residual change from charged hadron E/p
+				\item TimeRunX: same for A,B,C,D with respect to full 2012
+			\end{itemize}
+			\item TotalNoTime, TotalNoTimeNoFlavor
+			\begin{itemize}
+				\footnotesize
+				\item For unprescaled full 2012 data ($\Rightarrow$inclusive jets)
+				\item with or without FlavorQCD ($\Rightarrow$top mass)
+			\end{itemize}
+			\item More details at: \href{https://indico.cern.ch/event/345265/contribution/1/material/slides/0.pdf}{\color{blue}\scriptsize{https://indico.cern.ch/event/345265/contribution/1/material/slides/0.pdf}}
+		\end{itemize}
+	\end{block}
+}
+\subsubsection{PileUp}
+\frame{
+	\frametitle{Old PileUpPt (from 2013)}
+	\vspace*{-0.24cm}
+	\begin{columns}[T]
+	\hspace*{0.3cm}\column{0.43\textwidth}
+		\vspace*{-0.3cm}
+		\begin{block}{}
+			\begin{itemize}
+				\small
+				\item Old PileUpPt systematic was 100\% the difference between MC truth (V1) and Random Cone (V0)
+				\begin{itemize}
+					\item MC truth: effective offset inside the jet
+					\item Random Cone: effective offset outside the jet
+					\item Possible inside-outside differences include zero suppression, PF thresholds, calibration non-linearities etc.
+				\end{itemize}		
+			\end{itemize}
+		\end{block}
+	\column{0.6\textwidth}
+	\begin{textblock}{6.5}(6,0.9)
+	\begin{block}{}
+		\begin{itemize}
+			\small
+			\item New PileUpPt would have been $\leq60\%$ just from global L3Residual fit and improved EE offset modeling in RD MC
+		\end{itemize}
+	\end{block}
+	\end{textblock}
+	\vspace*{1.5cm}
+	\begin{myfancyblock}
+		\node[anchor=south west,inner sep=0] (image) at (0,0) {%
+			\hspace*{0.2cm}\includegraphics[width=0.48\textwidth]{images/JECUncert_Summer13_DATA_Summary_AK5PF_Eta00.png}%
+			\includegraphics[width=0.48\textwidth]{images/JECUncert_Summer13_DATA_Summary_AK5PF_Pt100.png}%
+		};
+	\end{myfancyblock}
+	\end{columns}
+	\vspace*{-0.25cm}
+	\begin{myfancyblock}
+		\node[anchor=south west,inner sep=0] (image) at (0,0) {%
+			\includegraphics[width=0.25\textwidth]{images/offsetVsDeltaR_Eta00_pTOffset.pdf}%
+			\includegraphics[width=0.25\textwidth]{images/offsetVsRcone_Eta00_pTOffset.pdf}%
+			\includegraphics[width=0.25\textwidth]{images/offsetVsDeltaR_Eta27_pTOffset.pdf}%
+			\includegraphics[width=0.25\textwidth]{images/offsetVsRcone_Eta27_pTOffset.pdf}%
+		};
+	\end{myfancyblock}
+}
+\frame{
+	\frametitle{PileUpPtRef}
+	\framesubtitle{AK5PFchs \& AK7PF}
+	\vspace*{-0.24cm}
+	\begin{block}{}
+		\begin{itemize}
+			\small
+			\item New, more detailed treatment of pile-up uncertainties
+			\item Takes into account the effective compensation of the residual offset in dijet and Z$+$jet balancing for $<\mu>=20$ (useful for $2.76\unit{TeV}$ data)
+			\item Reduces uncertainties at low $p_{T}$ (relevant for top group) and $|\eta|>2$ (relevant for SMP-J)
+			\item Helped in identifying pileup systematics correlations between $2.76\unit{TeV}$ and $8\unit{TeV}$ (relevant for SMP-J)
+			\item L3Res only for AK5PFchs, so offset systematics in barrel grow for other algorithms
+			\begin{itemize}
+				\footnotesize
+				\item While using AK5PFchs residuals for the other algorithms increases pileup systematics at low $p_{T}$, it also reduces the anti-correlation with high $p_{T}$
+			\end{itemize}
+		\end{itemize}
+	\end{block}
+	\vspace*{-0.1cm}
+	\begin{myfancyblock}
+		\node[anchor=south west,inner sep=0] (image) at (0,0) {%
+			\includegraphics[width=0.25\textwidth]{images/JECUncert_PileUp_AK5PFchs_Eta00.pdf}%
+			\includegraphics[width=0.25\textwidth]{images/JECUncert_PileUp_AK5PFchs_Pt100.pdf}%
+			\includegraphics[width=0.25\textwidth]{images/JECUncert_PileUp_AK7PF_Eta00.pdf}%
+			\includegraphics[width=0.25\textwidth]{images/JECUncert_PileUp_AK7PF_Pt100.pdf}%
+		};
+	\end{myfancyblock}
+}
+\frame{
+	\frametitle{PileUpPt[Eta]}
+	\framesubtitle{AK5PFchs \& AK7PF}
+	\vspace*{-0.24cm}
+	\begin{block}{}
+		\begin{itemize}
+			\item L2Res corrects for residual offset relative to barrel, for $<\mu>=20$ and $p_{T}=(30)60-2000\unit{GeV}$
+			\item Uncertainty grows for AK7PF due to larger offset and for higher fit range $p_{T}>71\unit{GeV}$
+		\end{itemize}
+	\end{block}
+	\begin{myfancyblock}
+		\node[anchor=south west,inner sep=0] (image) at (0,0) {%
+			\includegraphics[width=0.25\textwidth]{images/JECUncert_PileUp_AK5PFchs_Eta27.pdf}%
+			\includegraphics[width=0.25\textwidth]{images/JECUncert_PileUp_AK5PFchs_Pt30.pdf}%
+			\includegraphics[width=0.25\textwidth]{images/JECUncert_PileUp_AK7PF_Eta27.pdf}%
+			\includegraphics[width=0.25\textwidth]{images/JECUncert_PileUp_AK7PF_Pt30.pdf}%
+		};
+	\end{myfancyblock}
+	
+}
+\subsection{MuZero}
+\frame{
+	\frametitle{PileUpMuZero}
+	\vspace*{-0.24cm}
+	\begin{block}{}
+		\begin{itemize}
+			\item We compensate for the offset residual in L2L3Res for $<\mu>=20$
+			\item This means it is biased for $<\mu>=0$
+			\begin{itemize}
+				\item $<\mu>=0$ is relevant for $2.76\unit{TeV}$ analyses
+			\end{itemize}
+			\item Have a new, optional systematic called PileUpMuZero
+		\end{itemize}
+	\end{block}
+	\begin{myfancyblock}
+		\node[anchor=south west,inner sep=0] (image) at (0,0) {%
+			\includegraphics[width=0.48\textwidth]{images/JECUncert_PileUp_AK7PF_Pt30.pdf}%
+			\includegraphics[width=0.48\textwidth]{images/JECUncert_PileUp_AK7PF_Pt100.pdf}%
+		};
+	\end{myfancyblock}
+}
+\subsection{TimePt}
+\frame {
+	\frametitle{Time}
+	\vspace*{-0.24cm}
+	\begin{columns}[T]
+	\column{0.64\textwidth}
+	\vspace*{-0.3cm}
+	\begin{block}{}
+		\begin{itemize}
+			\footnotesize
+			\item Time dependence in barrel response observed by Matthieu Marionnaeu in E/p studies
+			\item Folded into the TimePt systematic
+			\item Special TimeRun[A,B,C,D] to estimate the effect for each run range
+			\begin{itemize}
+				\footnotesize
+				\item Done by varying the single pion response by an amount corresponding to relative E/p change for $p_{T}>10\unit{GeV}$ hadrons
+			\end{itemize}
+			\item Specifically done for SMP-J, which reported the slope in the inclusive jet cross section changing with time
+		\end{itemize}
+	\end{block}
+	\vspace*{-0.41cm}
+	\begin{center}
+	\includegraphics[width=0.9\textwidth]{images/Eop_BH_3_10.png}%
+	\end{center}
+	\column{0.34\textwidth}
+	\includegraphics[width=\textwidth]{images/JECUncert_Time_AK5PFchs_Eta00.pdf}\\
+	\includegraphics[width=\textwidth]{images/JECUncert_Time_AK5PFchs_Pt30.pdf}%
+	\end{columns}
+}
+
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
 \frametitle{Mandatory Jet Energy Corrections at CMS}
 %\includegraphics[width=10cm]{images/jecs.png}
 \begin{itemize}
 \item The minimum correction levels to be applied on any CMS analysis using Monte Carlo and Data are:
-\end{itemize}
-
-\begin{block}{Monte Carlo}
-L1(Pile Up) + L2(Relative) + L3(Absolute)
-\end{block}
-
-\begin{block}{Data}
-L1(Pile Up) + L2(Relative) + L3(Absolute) + L2L3 Residuals
-\end{block}
 
 \begin{itemize}
-\item Any analysis might place higher correction levels if necessary and available. User can check \href{https://twiki.cern.ch/twiki/bin/view/CMS/JECDataMC}{https://twiki.cern.ch/twiki/bin/view/CMS/JECDataMC} to learn about the ``Recommended Jet Energy Corrections and Uncertainties for Data and MC".
+\item \textbf{Monte Carlo:}\\
+{\color{red}L1(Pile Up) + L2(Relative) + L3(Absolute)}
+\item \textbf{Data:}\\
+{\color{red}L1(Pile Up) + L2(Relative) + L3(Absolute) + L2L3 Residuals}
+\end{itemize}
+\item Any analysis might place higher correction levels if necessary and available. 
+\item User can check \href{https://twiki.cern.ch/twiki/bin/view/CMS/JECDataMC}{https://twiki.cern.ch/twiki/bin/view/CMS/JECDataMC} to learn about the ``Recommended Jet Energy Corrections and Uncertainties for Data and MC".
 \end{itemize}
 
 }
 %---------------------------------------------------------------------------------------------------------------------------------------
-\subsubsection{JES Uncertainty Sources}
-\frame{
-\frametitle{JES and Uncertainties}
-\begin{block}{Description}
-\begin{itemize}
-\item The JEC uncertainty sources provide detailed information on JEC uncertainties for use in statistical data analysis. The sources are fully uncorrelated between themselves, but describe JEC variations that are fully correlated within a given source.
-\item FIX ME: Should we include how uncertainties are calculated? How they are applied? Sources?
-\end{itemize}
-\end{block}
-}
+%\subsubsection{JER Uncertainty Sources}
+%\frame{
+%\frametitle{JES and Uncertainties}
+%\begin{block}{Description}
+%\begin{itemize}
+%\item The JEC uncertainty sources provide detailed information on JEC uncertainties for use in statistical data analysis. The sources are fully uncorrelated between themselves, but describe JEC variations that are fully correlated within a given source.
+%\item FIX ME: Should we include how uncertainties are calculated? How they are applied? Sources?
+%\end{itemize}
+%\end{block}
+%}
 %---------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Collections}
 \frame{
@@ -281,5 +758,5 @@ L1(Pile Up) + L2(Relative) + L3(Absolute) + L2L3 Residuals
 }
 %---------------------------------------------------------------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------------------------------------------------------------
-\subsection{PUPPI}
+
 %---------------------------------------------------------------------------------------------------------------------------------------
