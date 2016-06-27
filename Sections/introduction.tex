@@ -56,11 +56,11 @@
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
 	\frametitle{JECs: A Factorized Approach}
-	\begin{textblock}{12.3}(0.25,0.7)
+%	\begin{textblock}{12.3}(0.25,0.7) %alexx
+	\begin{textblock}{.9}(0.05,0.085) %ben
 		\begin{figure}
 			\scalebox{.9}{
-				%\input{images/JEC_levels}
-				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
+			  \includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
 			}
 			\label{fig:factorized_approach}
 		\end{figure}
@@ -76,7 +76,7 @@
 				\item L1Offset - No longer used
 				\item L1FastJet - The current standard
 				\item Charged Hardron Subtraction - Remove the charged hadrons inside a jet which have a track coming from a pileup vertex
-				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block (more in section~\ref{})
+				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block (more in section~\ref{puppy})
 			\end{itemize}
 			\item Done on an {\color{blue}event-by-event} basis ($\rho$, $\mu$) and a {\color{red}jet-by-jet} basis ($p_{T}$, $\eta$, jet area)
 			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
@@ -86,7 +86,7 @@
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
 	\frametitle{JECs: A Factorized Approach}
-	\begin{textblock}{12.3}(0.25,0.75)
+        \begin{textblock}{.9}(0.05,0.085)
 		\begin{figure}
 			\scalebox{.9}{
 			%	\input{images/JEC_levels}
@@ -112,7 +112,7 @@
 			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
 		\end{itemize}
 	\end{block}
-	\begin{textblock}{12.3}(0.25,2.0)
+	\begin{textblock}{.9}(0.05,.25)
 		\begin{figure}
 			\includegraphics[width=0.5\textwidth]{images/OffMeantnpuRef_BB_ak4pfchs_beforeL1.pdf}
 			\includegraphics[width=0.5\textwidth]{images/OffMeantnpuRef_BB_ak4pfchs_afterL1.pdf}
@@ -123,7 +123,7 @@
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
 	\frametitle{JECs: A Factorized Approach}
-	\begin{textblock}{12.3}(0.25,0.75)
+        \begin{textblock}{.9}(0.05,0.085)
 		\begin{figure}
 			\scalebox{.9}{
 			%	\input{images/JEC_levels}
@@ -149,14 +149,14 @@
 			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
 		\end{itemize}
 	\end{block}
-	\begin{textblock}{12.3}(0.25,2.0)
+	\begin{textblock}{.9}(0.05,.25)
 		\begin{figure}
 			\includegraphics[width=0.5\textwidth]{images/OffMeantnpuRef_BB_ak4pfchs_beforeL1.pdf}
 			\includegraphics[width=0.5\textwidth]{images/OffMeantnpuRef_BB_ak4pfchs_afterL1.pdf}
 			\label{fig:OffMeantnpuRef}
 		\end{figure}
 	\end{textblock}
-		\begin{textblock}{12.3}(0.25,2.0)
+		\begin{textblock}{.9}(0.05,.25)
 		\begin{figure}
 			\includegraphics[width=0.5\textwidth]{images/Can0_noPreliminary.pdf}
 			\includegraphics[width=0.5\textwidth]{images/Can1_noPreliminary.pdf}
@@ -201,7 +201,7 @@
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
 	\frametitle{JECs: A Factorized Approach}
-	\begin{textblock}{12.3}(0.25,0.75)
+        \begin{textblock}{.9}(0.05,0.085)
 		\begin{figure}
 			\scalebox{.9}{
 			%	\input{images/JEC_levels}
@@ -233,7 +233,7 @@
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
 	\frametitle{JECs: A Factorized Approach}
-	\begin{textblock}{12.3}(0.25,0.75)
+        \begin{textblock}{.9}(0.05,0.085)
 		\begin{figure}
 			\scalebox{.9}{
 			%	\input{images/JEC_levels}
@@ -262,7 +262,7 @@
 		\end{itemize}
 	\end{alertblock}
 	
-	\begin{textblock}{12.3}(0.25,2.0)
+	\begin{textblock}{.9}(0.05,.25)
 		\begin{figure}
 			\includegraphics[width=0.5\textwidth]{images/Can1_noPreliminary.pdf}
 			\includegraphics[width=0.5\textwidth]{images/Can2_noPreliminary.pdf}
@@ -273,7 +273,7 @@
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
 	\frametitle{JECs: A Factorized Approach}
-	\begin{textblock}{12.3}(0.25,0.75)
+        \begin{textblock}{.9}(0.05,0.085)
 		\begin{figure}
 			\scalebox{.9}{
 			%	\input{images/JEC_levels}
@@ -302,14 +302,14 @@
 		\end{itemize}
 	\end{alertblock}
 	
-	\begin{textblock}{12.3}(0.25,2.0)
+	\begin{textblock}{.9}(0.05,.25)
 		\begin{figure}
 			\includegraphics[width=0.5\textwidth]{images/Can1_noPreliminary.pdf}
 			\includegraphics[width=0.5\textwidth]{images/Can2_noPreliminary.pdf}
 			\label{fig:closurel1l2l3}
 		\end{figure}
 	\end{textblock}
-		\begin{textblock}{12.3}(0.25,2.0)
+		\begin{textblock}{.9}(0.05,.25)
 		\begin{figure}
 			\includegraphics[width=0.5\textwidth]{images/ClosureVsPt_Overview2_ak5pfchsl1_noPreliminary.pdf}
 		\end{figure}
@@ -318,7 +318,7 @@
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
 	\frametitle{JECs: A Factorized Approach}
-	\begin{textblock}{12.3}(0.25,0.75)
+        \begin{textblock}{.9}(0.05,0.085)
 		\begin{figure}
 			\scalebox{.9}{
 			%	\input{images/JEC_levels}
@@ -357,7 +357,7 @@
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
 	\frametitle{JECs: A Factorized Approach}
-	\begin{textblock}{12.3}(0.25,0.75)
+        \begin{textblock}{.9}(0.05,0.085)
 		\begin{figure}
 			\scalebox{.9}{
 			%	\input{images/JEC_levels}
@@ -393,7 +393,7 @@
 		\end{itemize}
 	\end{block}
 	
-		\begin{textblock}{12.3}(0.25,2.0)
+		\begin{textblock}{.9}(0.05,.25)
 		\begin{figure}
 			\includegraphics[width=0.5\textwidth]{images/L5AbsCorGraphs.pdf}
 			\label{fig:flavor}
@@ -403,7 +403,7 @@
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
 	\frametitle{JECs: A Factorized Approach}
-	\begin{textblock}{12.3}(0.25,0.75)
+        \begin{textblock}{.9}(0.05,0.085)
 		\begin{figure}
 			\scalebox{.9}{
 			%	\input{images/JEC_levels}
@@ -577,7 +577,7 @@
 			\end{itemize}
 		\end{block}
 	\column{0.6\textwidth}
-	\begin{textblock}{6.5}(6,0.9)
+	\begin{textblock}{.5}(.48,0.11)
 	\begin{block}{}
 		\begin{itemize}
 			\small
