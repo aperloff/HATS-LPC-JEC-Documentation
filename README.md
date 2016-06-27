@@ -4,4 +4,4 @@ This repository contains presentations, documents, and supporting material for t
 cd TAMU-Latex-Styles-master/
 sudo python install.py
 cd ..
-pdflatex 2015_06_16-HATS-LPC-JEC.tex
+pdflatex 2016_06_30-HATS-LPC-JEC.tex
