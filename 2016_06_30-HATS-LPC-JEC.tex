@@ -1,0 +1,121 @@
+%\PassOptionsToPackage{usenames,dvipsnames}{xcolor}
+\documentclass[compress,10pt,usenames,dvipsnames]{Presentation} % Add notesonly option to print the notes in each frame
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Some useful commands
+%
+\begin{comment}
+  \frame
+      {
+        \frametitle{List displayed step by step}
+        text
+      }
+      
+      frame environment commands
+      command<#>{applies the command only on certain slides}
+      ex:
+      \textbf{Thislineisboldonallthreeslides.}
+      \textbf<2>{Thislineisboldsolelyonthesecondslide.}
+      \textbf<3>{Thislineisboldsolelyonthethirdslide.}
+      
+      \only<#>{text shown only on the specified slide}
+      
+      \uncover<slides>{text that occupies space,but is not shown except on the specified slides}
+      
+      \invisible<slides>{text is invisibale on the specified slides}
+      
+      \alt<slides>{<main text shown on specified slide>}{otherwise the alternative text is shown}
+      
+      \temporal<slides>{before specified slide}{on specified slide}{after specified slide}
+      
+      #-#
+      
+      #- all slides after #
+      
+      -#=1-#
+      
+      Highlighted environments
+      \begin{beamerboxesrounded}{title}
+      \end{beamerboxesrounded}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+%Only one section and subsection shown at a time
+\setbeamertemplate{headline}
+{%
+  \leavevmode%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=2.125ex]{section in head/foot}% original dp=1.125ex
+    \hbox to .5\paperwidth{\hfil\insertsectionhead\hfil}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=2.125ex]{subsection in head/foot}%
+    \hbox to .5\paperwidth{\hfil\insertsubsectionhead\hfil}
+  \end{beamercolorbox}%
+}
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[HATS\@LPC]{HATS@LPC} %\title[short title]{title}
+\subtitle[JEC]{Jet Energy Corrections in CMS} %\subtitle[short subtitle]{subtitle}
+\author[A. Perloff, B. Kreis]{Alexx Perloff\inst{1} \& Ben Kreis\inst{2}} % \author[A. Perloff]{Alexx Perloff}
+\institute[TAMU]
+{
+\begin{center}
+  \inst{1}%
+  Department of Physics and Astronomy\\
+  Texas A{\&}M University\\
+  %College Station, Texas 77843\\[1ex]
+  %\texttt{aperloff@physics.tamu.edu}
+  %\and
+  \inst{2}%
+  Fermilab\\
+  %College Station, Texas 77843\\[1ex]
+  %\texttt{aperloff@physics.tamu.edu}
+  %\and
+  \end{center}
+}
+\newdate{date}{30}{06}{2016}
+\usdate
+\date{\dayofweekname{30}{06}{2016}, \displaydate{date}}
+%\date{\displaydate{date}}
+%\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\newlength{\residualSpace}
+
+\frame {
+  \begin{center}
+    \includegraphics[width=0.45in]{images/TAMULogoMaroonBox.jpg}\hspace{0.97in}\includegraphics[width=2.0in]{images/FNAL-Logo-NAL-Blue.pdf}\hspace{0.97in}\includegraphics[width=0.45in]{images/CMS_exp.png}
+  \end{center}
+  \vspace{-0.5cm}
+  \titlepage
+}
+
+\section{Introduction}
+\label{sec:introduction}
+\input{Sections/introduction}
+
+\section{Technical}
+\label{sec:technical}
+\input{Sections/technical}
+
+\section{User Software}
+\label{sec:user_software}
+\input{Sections/user_software}
+
+\section{Conclusion}
+\label{sec:conclusion}
+\input{Sections/conclusion}
+
+\section{Hands-On}
+\label{sec:hands_on}
+\input{Sections/hands_on}
+
+\section*{Backup}
+\label{sec:backup}
+\input{Sections/backup}
+
+\end{document}
