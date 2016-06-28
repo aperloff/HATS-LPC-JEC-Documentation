@@ -4,27 +4,100 @@
 \frametitle{What form do the corrections come in?}
 \framesubtitle{Text File}
 \vspace*{0.3cm}
-	%\begin{textblock}{14.5}(0.0,0.7)
-		\begin{center}
-%			\scalebox{.9}{
-				%\input{images/JEC_levels}
-				\includegraphics[width=\textwidth]{images/txtfile.png}
-%			}
-		\end{center}
-%	\end{textblock}
 	
-	\begin{block}{How to read the JEC text files?}
+	\begin{block}{Several text files:}
 		\begin{itemize}
-		\item The \textbf{top row} establishes the definitions for the parameters to follow, the correction factor and the correction level being applied.
-		\item The \textbf{first two columns} are the $\eta$ bins.
-		\item The next column tells you how many numbers will follow it (in this case 9).
-		\item The next number is the lower bound of the $\rho$, $p_{T}$ and jet area bins (the upper bound is the third number after that).
-		\item Intsructions on how to apply the Jet Energy Corrections from a text file in FWLite environment. \\ 
-		\footnotesize
-		\href{https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookJetEnergyCorrections}{https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookJetEnergyCorrections}
+                        \item L1FastJet
+                        \item L2L3Residuals
+                        \item Total uncertainty
+                        \item Uncertainty by source
+                        \item JER
+                        \item JER scale factors
 		\end{itemize}
 	\end{block}
 }
+
+\frame{
+\frametitle{JEC Text Files}
+                \begin{figure}
+                  \centering
+		     \includegraphics[width=\textwidth]{images/TextFileScreenshots/L1FastJet.png}    
+                    \caption{L1FastJet}
+                 \end{figure}
+
+                \begin{figure}
+                  \centering
+		     \includegraphics[width=\textwidth]{images/TextFileScreenshots/L2L3Residuals.png}    
+                    \caption{L2L3Residuals}
+                 \end{figure}
+
+	\vspace{-.5cm}
+	\begin{block}{How to read the JEC text files?}
+                \begingroup \scriptsize
+		\begin{itemize}
+		\item The \textbf{top row} establishes the definitions for the parameters to follow, the correction factor and the correction level being applied.
+		\item The \textbf{first two columns} are the $\eta$ bin boundaries
+		\item The next column tells you how many columns will follow it (in this case 9)
+		\item The next numbers define the bin boundaries in e.g. $\rho$, $p_{T}$, and/or jet area
+                \item The last numbers are parameters for the correction
+		\item Instructions on how to apply the Jet Energy Corrections from a text file in FWLite environment. \\ 
+		\href{https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookJetEnergyCorrections}{https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookJetEnergyCorrections}
+		\end{itemize}
+                \endgroup
+	\end{block}
+}
+
+\frame{
+\frametitle{JEC Uncertainty Text Files}
+                \begin{figure}
+                  \centering
+		     \includegraphics[width=\textwidth]{images/TextFileScreenshots/Uncertainty.png}    
+                    \caption{Total Uncertainty}
+                 \end{figure}
+	\vspace{-.4cm}
+                \begin{figure}
+                  \centering
+	             \includegraphics[width=\textwidth]{images/TextFileScreenshots/UncertaintySources.png}    
+                    \caption{Uncertainty by Source}
+                 \end{figure}
+
+	\vspace{-.5cm}
+	\begin{block}{How to read the JEC Uncertainty text files?}
+                \begingroup \scriptsize
+		\begin{itemize}
+                \item First two columns are $\eta$ range, third column is how many columns will follow it
+                \item Following this, you have lower $p_T$ bin boundary, uncertainty, upper $p_T$ bin boundary repeated
+                \item In file with uncertainties split by source, the name of the source begins each section [LikeThis]
+		\end{itemize}
+                \endgroup
+	\end{block}
+}
+
+\frame{
+\frametitle{JER Text Files}
+                \begin{figure}
+                  \centering
+		     \includegraphics[width=\textwidth]{images/TextFileScreenshots/JetResolutionResolution.png}    
+                    \caption{Jet Resolution}
+                 \end{figure}
+	\vspace{-.4cm}
+                \begin{figure}
+                  \centering
+	             \includegraphics[width=\textwidth]{images/TextFileScreenshots/JetResolutionScaleFactors.png}    
+                    \caption{Jet Resolution Scale Facors}
+                 \end{figure}
+
+	\vspace{-.5cm}
+	\begin{block}{How to read the JER text files?}
+                \begingroup \scriptsize
+		\begin{itemize}
+                \item JER (top): $\eta$ bin boundaries, rho bin boundaries, number of columns to follow, $p_T$ bin boundaries, parameters
+                \item JER scale factors (bottom): $\eta$ bin boundaries, number of columns to follow, parameters
+		\end{itemize}
+                \endgroup
+	\end{block}
+}
+
 %-----------------------------------------------------------------------------------------------------------
 \frame{
 \frametitle{What form do the corrections come in?}
