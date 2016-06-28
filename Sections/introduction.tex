@@ -415,13 +415,14 @@
 				%\caption{\footnotesize{Sketch by H. Kirschenmann}}
 				\label{fig:RelativeCalibration}
 			\end{figure}
-                        \vspace{.5cm}
+                        \vspace{.1cm}
 			\begin{block}{}
 				\begin{itemize}
 					\footnotesize
                                       \item $\eta$-dependent correction  
                                       \item Two methods using dijet events: $p_T$ balance and MET Projection Fraction (MPF)
-					\item Separate constants for outer end cap (very large data/MC difference) and HF (very small data/MC difference)
+				      \item Done in bins of $\alpha={p_{T}}_3/{p_{T}}_{avg}$ and extrapolated to 0 
+	                              \item Separate constants for outer end cap (very large data/MC difference) and HF (very small data/MC difference)
                                         \item \href{https://indico.cern.ch/event/544654/contributions/2210386/attachments/1296039/1937185/20160625_JEC_L2Res_CMSSW80X_2016Data_4_0fb_addJER.pdf}{\color{blue}\scriptsize{Latest results presented last week}}.  On right: MPF method with Pythia8
 				\end{itemize}
 			\end{block}
@@ -456,13 +457,13 @@
 %				\caption{\footnotesize{Sketch by H. Kirschenmann}}
 				\label{fig:AbsoluteCalibration}
 			\end{figure}
-
+                        \vspace{-.35cm}
 			\begin{block}{}
 			\begin{itemize}
 				\footnotesize
                                 \item $p_T$-dependent correction
 				\item Use $\gamma$+jet or $Z(\mu\mu/ee)$+jet events
-                                \item Again use $p_T$ balancing or MPF methods
+                                \item Again use $p_T$ balancing or MPF methods, done in bins of $\alpha={p_{T}}_2/{p_{T}}_{Z}$ and extrapolated to 0 
                                 \item Latest \href{https://indico.cern.ch/event/544654/contributions/2210383/attachments/1295640/1936919/2016-06-22-JERC-virtual-meeting-cheidecker.pdf}{\color{blue}\scriptsize{Z+jet}} and \href{https://indico.cern.ch/event/544654/contributions/2210385/attachments/1296031/1932394/Giugno-21-2016_-_Federico_Preiato.pdf}{\color{blue}\scriptsize{$\gamma$+jet}} results presented last week.  On right: $Z(\mu\mu)+jet$
                                  \item Third method, Multijet Balance (MJB), using multijet events constrains high $p_T$
 			\end{itemize}
@@ -493,8 +494,8 @@
 		\begin{block}{}
 		  \begin{itemize}
 		    \footnotesize
-		  \item The final absolute jet $p_T$ scale is taken from a global fit to Z+jet, $\gamma$+jet, and multijet data
-                  \item Essentially combines the different L3Residual methods ($p_T$ balance, $MPF$, $MJB$) and data samples
+		  \item The final absolute jet $p_T$ scale is taken from a global fit to Z($\mu\mu$)+jet, Z($ee$)+jet, $\gamma$+jet, and multijet data
+                  \item Choose in advance between $p_T$ balancing or MPF for Z($\mu\mu$)+jet, Z($ee$)+jet, and $\gamma$+jet
                   \item Covers full $p_T$ range and reduces uncertainty
                   \item On right, solid line shows central value and dotted lines show statistical uncertainty of the fit
 		  \end{itemize}
@@ -608,5 +609,13 @@
 }
 %---------------------------------------------------------------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------------------------------------------------------------
-
+\subsection{JEC Release Procedure}
+\frame{
+	\frametitle{JEC Release Procedure}
+	\begin{itemize}
+          \item Announced on ``JetMET: Jet Energy Scale'' hypernews
+          \item Described on \href{https://twiki.cern.ch/twiki/bin/view/CMS/JECDataMC}{https://twiki.cern.ch/twiki/bin/view/CMS/JECDataMC}
+          \item {Important to read the ``Notes'' associated to an update, which often describe partial update}
+	\end{itemize}
+}
 %---------------------------------------------------------------------------------------------------------------------------------------
