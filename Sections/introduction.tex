@@ -70,13 +70,17 @@
 		\begin{itemize}
 			\footnotesize
 			\item Pileup is the additional energy in a jet coming from all interactions \textbf{except} the primary vertex (PV) and it's underlying event (UE)
+                          \begin{itemize}
+                                \footnotesize
+                                \item Offset $\equiv p_{T}^{with\ PU} - p_{T}^{no\ PU}$
+                        \end{itemize}
 			\item The goal of the pileup (\textbf{L1}) corrections is to remove the energy inside a jet coming from pile-up events
 			\begin{itemize}
 				\footnotesize
 				\item L1Offset - No longer used
 				\item L1FastJet - The current standard
 				\item Charged Hardron Subtraction - Remove the charged hadrons inside a jet which have a track coming from a pileup vertex
-				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block (more in section~\ref{puppy})
+				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block 
 			\end{itemize}
 			\item Done on an {\color{blue}event-by-event} basis ($\rho$, $\mu$) and a {\color{red}jet-by-jet} basis ($p_{T}$, $\eta$, jet area)
 			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
@@ -106,7 +110,7 @@
 				\item L1Offset - No longer used
 				\item L1FastJet - The current standard
 				\item Charged Hardron Subtraction - Remove the charged hadrons inside a jet which have a track coming from a pileup vertex
-				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block (more in section~\ref{puppy})
+				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block
 			\end{itemize}
 			\item Done on an {\color{blue}event-by-event} basis ($\rho$, $\mu$) and a {\color{red}jet-by-jet} basis ($p_{T}$, $\eta$, jet area)
 			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
@@ -143,7 +147,7 @@
 				\item L1Offset - No longer used
 				\item L1FastJet - The current standard
 				\item Charged Hardron Subtraction - Remove the charged hadrons inside a jet which have a track coming from a pileup vertex
-				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block (more in section~\ref{puppy})
+				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block 
 			\end{itemize}
 			\item Done on an {\color{blue}event-by-event} basis ($\rho$, $\mu$) and a {\color{red}jet-by-jet} basis ($p_{T}$, $\eta$, jet area)
 			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
@@ -162,41 +166,6 @@
 			\includegraphics[width=0.5\textwidth]{images/Can1_noPreliminary.pdf} %no 13 TeV version
 		\end{figure}
 	\end{textblock}
-}
-%---------------------------------------------------------------------------------------------------------------------------------------
-\subsection{PUPPI}
-\label{puppi}
-\frame{
-	\frametitle{PUPPI: Pileup Per Particle Identification}
-	\vspace*{-0.24cm}
-	
-	\begin{columns}
-	\begin{column}{0.55\textwidth}
-	\begin{block}{PUPPI}
-		\begin{itemize}
-			\footnotesize
-			\item New algorithm that removes pileup particles from inside a jet.
-			\item Mitigates pileup on a "per particle basis" using several handles available such as: $\rho$ (pileup energy density measured per event), charged tracks from the hard scatter and pileup vertices, etc.
-			\item By applying corrections at the particle level, before jet clustering, one can also perform jet four-vector, resulting in a better detector resolution.
-		\end{itemize}
-	\end{block}
-	\end{column}
-	\begin{column}{5cm}
-	\includegraphics[width=5cm]{images/puppi.png}
-	\end{column}
-	\end{columns}
-	\vspace*{0.05cm}
-	\begin{columns}
-	\begin{column}{3.2cm}                          
-	\includegraphics[width=3.4cm]{images/JME-16-001/OffMeantnpuRef_BB_ak4pf_no2000_beforeL1.pdf}
-	\end{column}
-	\begin{column}{3.5cm}
-	\includegraphics[width=3.4cm]{images/JME-16-001/OffMeantnpuRef_BB_ak4pfchs_no2000_beforeL1.pdf}
-	\end{column}
-	\begin{column}{3.5cm}
-	\includegraphics[width=3.4cm]{images/JME-16-001/OffMeantnpuRef_BB_ak4puppi_no2000_beforeL1.pdf}
-	\end{column}
-	\end{columns}
 }
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
@@ -447,20 +416,19 @@
 				\label{fig:RelativeCalibration}
 			\end{figure}
 			\vspace*{-0.1cm}
-			\begin{block}{Updates in 2014}
+			\begin{block}{}
 				\begin{itemize}
 					\footnotesize
-					\item Many mprovements here
-					\item The new JER constants have half the uncertainty of what they had before
+                                        \item Two methods using dijet events: $p_T$ balance and MET Projection Fraction (MPF)
 					\item Separate constants for outer end cap (very large data/MC difference) and HF (very small data/MC difference)
-					\item Due to improved methods, study of systematics, and better use of statistics
+                                        \item \href{https://indico.cern.ch/event/544654/contributions/2210386/attachments/1296039/1937185/20160625_JEC_L2Res_CMSSW80X_2016Data_4_0fb_addJER.pdf}{\color{blue}\scriptsize{Latest results presented last week}}.  On right: MPF method with Pythia8
 				\end{itemize}
 			\end{block}
 		\column{0.56\textwidth}
 		\vspace*{-0.4cm}
 		\begin{figure}[T]
 			\centering
-			\includegraphics[width=6.5cm]{images/L2Residuals.png}%  %no 13 TeV version
+			\includegraphics[width=6.5cm]{images/l2res.pdf}%  
 			\label{fig:L2Residual}
 		\end{figure}
 	\end{columns}
@@ -471,46 +439,58 @@
 	\framesubtitle{L3Residual Corrections}
 	\vspace*{-0.24cm}
 	\begin{columns}[T]
-		\column{0.4\textwidth}
+		\column{0.5\textwidth}
 			%\begin{textblock}{2.5}(0.25,1.5){\color{red}\scriptsize{$Z\left(\mu\mu\right)+jet$\\$Z\left(ee\right)+jet$\\$\gamma+jet$\\(multijet events)}}\end{textblock}
 			\vspace*{-0.4cm}
 			\begin{figure}[T]
 				\centering
-				\includegraphics[width=0.67\textwidth]{images/unc2.png}%
-				\vspace*{-0.4cm}
+				\includegraphics[width=1.0\textwidth]{images/unc2.png}%
+				%\vspace*{-0.4cm}
 %				\caption{\footnotesize{Sketch by H. Kirschenmann}}
 				\label{fig:AbsoluteCalibration}
 			\end{figure}
 			\vspace*{0.5cm}
 
-			\begin{block}{Updates in 2014}
+			\begin{block}{}
 			\begin{itemize}
 				\footnotesize
-				\item A preliminary version of the new residuals was already used by the Top group for their latest measurement (reported at Top2014)
-				\begin{itemize}
-					\scriptsize
-					\item Changed relative to that version very small
-				\end{itemize} 
-				\item The difference relative to the old data corrections (residuals) is about $1\sigma$ at low $p_{T}$ and only slightly more than $1\sigma$ at high $p_{T}$
+				\item Use $\gamma$+jet or $Z(\mu\mu/ee)$+jet events
+                                \item Again use $p_T$ balancing or MPF methods
+                                \item Latest \href{https://indico.cern.ch/event/544654/contributions/2210383/attachments/1295640/1936919/2016-06-22-JERC-virtual-meeting-cheidecker.pdf}{\color{blue}\scriptsize{Z+jet}} and \href{https://indico.cern.ch/event/544654/contributions/2210385/attachments/1296031/1932394/Giugno-21-2016_-_Federico_Preiato.pdf}{\color{blue}\scriptsize{$\gamma$+jet}} results presented last week.  On right: $Z(\mu\mu)+jet$
 			\end{itemize}
 			\end{block}
 		\column{0.56\textwidth}
 		\vspace*{-0.4cm}
 		\begin{figure}[T]
 				\centering
-				\includegraphics[width=\textwidth]{images/unc.png}%  %no 13 TeV version
+				\includegraphics[width=.9\textwidth]{images/l3res.pdf}
 				\label{fig:L3Residual}
 		\end{figure}
 		\vspace*{-0.6cm}
-		%\begin{figure}[T]
-		%		\centering
-		%		\includegraphics[width=0.5\textwidth]{2014/extrapolation.pdf}%
-		%		\includegraphics[width=0.5\textwidth]{2014/ratio_extrapolation.pdf}%
-		%		\label{fig:L3ResidualNew}
-		%\end{figure}
 	\end{columns}
-	%\begin{textblock}{5.90}(8,3.0){\color{red}Old}\end{textblock}
-	%\begin{textblock}{5.90}(8,7.2){\color{red}New}\end{textblock}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------------------------------------------------------------------------------------------------------------------------------------
+\frame{
+	\frametitle{Global Fit}
+	\vspace*{-0.24cm}
+	\begin{columns}[T]
+		\column{0.5\textwidth}
+		\begin{block}{}
+		  \begin{itemize}
+		    \footnotesize
+		  \item
+		  \end{itemize}
+		\end{block}
+		\column{0.56\textwidth}
+		\vspace*{-0.4cm}
+		\begin{figure}[T]
+		  \centering
+		  \includegraphics[width=.6\textwidth]{images/globalfit.pdf}
+		  \label{fig:L3Residual}
+		\end{figure}
+		\vspace*{-0.6cm}
+	\end{columns}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Uncertainties}
@@ -520,18 +500,18 @@
 	\begin{block}{Updates to the Systematics}
 		\begin{itemize}
 			\small
-			\item  {\color{red}\textbf{PileUpPtRef (new)}}
+			\item  PileUpPtRef
 			\begin{itemize}
 				\footnotesize
 				\item AK5PFchs after global L3Residual fit ($100\%\rightarrow25\%$)
 				\item Others: Ò$60\%$Ó relative to AK5PFchs Ò$35\%$Ó
 			\end{itemize}
-			\item {\color{red}\textbf{PileUpPt[BB,EC1,EC2,HF] (modified)}}
+			\item PileUpPt[BB,EC1,EC2,HF]
 			\begin{itemize}
 				\footnotesize
 				\item PileUpPt with respect to PileUpPtRef at $|\eta|<1.3$ after $p_{T}$-dependent (log-linear) L2Residual fit
 			\end{itemize}
-			\item  {\color{red}\textbf{PileUpMuZero (new, optional)}}
+			\item  PileUpMuZero (new, optional)
 			\begin{itemize}
 				\footnotesize
 				\item Optional ÒPileUpPtÓ for $<\mu>=0$ ($2.76\unit{TeV}$ data)
@@ -542,7 +522,7 @@
 				\footnotesize
 				\item Old-style PileUpPt systematic ($60\%$)
 			\end{itemize}
-			\item  {\color{red}\textbf{TimePt, TimeRunX (new); TimeEta=Time(old)}}
+			\item  TimePt, TimeRunX (new); TimeEta=Time(old)
 			\begin{itemize}
 				\footnotesize
 				\item TimePt: L3Residual change from charged hadron E/p
@@ -738,23 +718,21 @@
 	\begin{itemize}
 		\item Clustering algorithms:
 		\begin{itemize}
-			\item {\color{red}Anti-k$_{T}$}
-			\item Cambridge/Aachen - No JEC yet, but might be supported in future if necessary
+			\item Anti-k$_{T}$
 		\end{itemize}
 		\item Cone sizes:
 		\begin{itemize}
-			\item {\color{red}$R=\{n/10 : 1{\leqslant}n{\leqslant}10\}$}
+			\item R=0.4, 0.8
 		\end{itemize}
 		\item Jet types:
 		\begin{itemize}
-			\item {\color{red}PF} - Still in use
-			\item {\color{red}PF+CHS} - Default
-			\item {\color{red}PF+PUPPI} - Being tested now
-			\item PFClusterJet - Coming soon?
-			\item {\color{red}Jet Plus Track (JPT)} - Provided by Olga Kodolova
+			\item PF - Still in use
+			\item PF+CHS - Default
+			\item PF+PUPPI - New kid on the block
+			\item Calo 
+			\item Jet Plus Track (JPT)
 		\end{itemize}
 	\end{itemize}
-	\textbf{Note}: Items in {\color{red}red} will be available for use in RunII. This amounts to \textbf{32} different payloads.
 }
 %---------------------------------------------------------------------------------------------------------------------------------------
 %---------------------------------------------------------------------------------------------------------------------------------------
