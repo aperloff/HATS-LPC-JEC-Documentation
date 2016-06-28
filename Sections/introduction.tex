@@ -8,7 +8,7 @@
 		\begin{column}{0.49\textwidth}
 			\begin{block}{Why do we need jet energy corrections?}
 					\begin{itemize}
-						\item For an abundance of reasons, the CMS detector does not perfectly measure the $p_{T}$ of most of the jets
+						\item For an abundance of reasons, the CMS detector does not perfectly measure the $p_{T}$ and energy of most of the jets
 						\item Therefore it is not straightforward to translate the measured jet energy to the true particle or parton energy
 						\item Reasons:
 						\begin{itemize}
@@ -34,7 +34,7 @@
 	\vspace*{-0.24cm}
 	\begin{block}{Definition}
 		\begin{itemize}
-			\item The jet energy corrections (JEC) are a set of functions, constants, and tools that allows the proper mapping of the measured jet energy to the energy of the initiating parton
+			\item The jet energy corrections (JEC) are a set of functions, constants, and tools that allows the proper mapping of the measured jet energy to the energy of the true particle jet. 
 		\end{itemize}
 	\end{block}
 	\vspace*{-0.15cm}
@@ -415,7 +415,7 @@
 				%\caption{\footnotesize{Sketch by H. Kirschenmann}}
 				\label{fig:RelativeCalibration}
 			\end{figure}
-
+                        \vspace{.5cm}
 			\begin{block}{}
 				\begin{itemize}
 					\footnotesize
@@ -426,10 +426,16 @@
 				\end{itemize}
 			\end{block}
 		\column{0.56\textwidth}
-		\vspace*{-0.4cm}
+		\vspace*{-0.2cm}
 		\begin{figure}[T]
 			\centering
-			\includegraphics[width=6.5cm]{images/l2res.pdf}%  
+			\includegraphics[width=3.5cm]{images/l2equations.pdf}%  
+			\label{fig:L2Residual}
+		\end{figure}
+                \vspace{-.75cm}
+		\begin{figure}[T]
+			\centering
+			\includegraphics[width=4.7cm]{images/l2res.pdf}%  
 			\label{fig:L2Residual}
 		\end{figure}
 	\end{columns}
@@ -465,10 +471,16 @@
 		\vspace*{-0.4cm}
 		\begin{figure}[T]
 				\centering
-				\includegraphics[width=.9\textwidth]{images/l3res.pdf}
+				\includegraphics[width=3 cm]{images/l3equations.pdf}
 				\label{fig:L3Residual}
 		\end{figure}
-		\vspace*{-0.6cm}
+		\vspace*{-0.3cm}                
+		\begin{figure}[T]
+				\centering
+				\includegraphics[width=.75\textwidth]{images/l3res.pdf}
+				\label{fig:L3Residual}
+		\end{figure}
+
 	\end{columns}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
