@@ -1,20 +1,74 @@
-%!TEX root = ../2015_06_16-HATS-LPC-JEC.tex
+%!TEX root = ../2018_06_13-HATS-LPC-JEC.tex
 
-\frame{
+\subsection{Workflow}
+\begin{frame}
 	\frametitle{JEC Options}
 	\framesubtitle{Which path will you take?}
-	\framezoom<1><2>[border=4](0.0cm,0.5cm)(1.0cm,3.0cm)
-	\includegraphics[height=\textheight,width=\textwidth,keepaspectratio]{images/JECParadigm.jpg}
-}
-\frame{
-	\frametitle{JEC Options}
-	\framesubtitle{Which path will you take?}
-	\framezoom<1><2>[border=4](3.0cm,0.5cm)(1.0cm,3.0cm)
-	\includegraphics[height=\textheight,width=\textwidth,keepaspectratio]{images/JECParadigm.jpg}
-}
-\frame{
-	\frametitle{JEC Options}
-	\framesubtitle{Which path will you take?}
-	\framezoom<1><2>[border=4](6.4cm,0.5cm)(1.5cm,3.9cm)
-	\includegraphics[height=\textheight,width=\textwidth,keepaspectratio]{images/JECParadigm.jpg}
-}
+
+	\tikzstyle{type} = [ellipse, minimum width=1.5cm, minimum height=1cm, text centered, draw=black, fill=yellow!30, font=\scriptsize]
+	\tikzstyle{tier} = [rectangle, rounded corners, minimum width=1.5cm, minimum height=1cm,text centered, draw=black, fill=red!30, font=\scriptsize]
+	\tikzstyle{t1}   = [rectangle, rounded corners, minimum width=1.5cm, minimum height=1cm, text centered, draw=black, fill=blue!30, font=\scriptsize]
+	\tikzstyle{t2}   = [rectangle, rounded corners, minimum width=1.5cm, minimum height=1cm, text centered, draw=black, fill=orange!30, font=\scriptsize]
+	\tikzstyle{t3}   = [rectangle, rounded corners, minimum width=1.5cm, minimum height=1cm, text centered, draw=black, fill=green!30, font=\scriptsize]
+	\tikzstyle{arrow}      = [->,>=stealth]
+	\tikzstyle{arrowrec}   = [->,>=stealth, thick, violet]
+	\tikzstyle{arrownorec} = [->,>=stealth, ultra thick, violet]
+
+	\hspace*{-0.2cm}\begin{tikzpicture}[node distance=2.1cm]
+		\node (datatier)[type]                                 {Data Tier};
+		\node (jec)     [type, below of=datatier]              {JEC};
+		\node (jecu)    [type, below of=jec]                   {JEC Unc.};
+		\node (jer)     [type, below of=jecu, text width=1.5cm]{JER\\\tiny(up, nom., down)};
+
+		\node (miniaod) [tier, right of=datatier]           {MINIAOD};
+		\node (aod)     [tier, right of=miniaod, xshift=6cm]{AOD};
+
+		\node (default_jec) [t1, right of=jec]                        {MiniAOD};
+		\node (tbx)         [t1, right of=default_jec, xshift=-0.45cm]{JetToolbox};
+		\node (ajc)         [t1, right of=tbx, xshift=-0.2cm]         {addJetCollection};
+		\node (pju)         [t1, right of=ajc, xshift=-0.05cm]        {patJetUpdater};
+		\node (pfbreco)     [t1, right of=pju, xshift=-0.35cm]        {PFBRECO};
+		\node (otf)         [t1, right of=pfbreco, xshift=-0.5cm]     {on-the-fly};
+
+		\node (prod1) [t2, right of=jecu]                 {Producer};
+		\node (otf1)  [t2, right of=prod1, xshift=6cm]{on-the-fly};
+
+		\node (prod2) [t3, right of=jer]                  {Producer};
+		\node (otf2)  [t3, right of=prod2, xshift=6cm]{on-the-fly};
+
+		\draw [arrow]      (aod) -- (tbx);
+		\draw [arrow]      (aod) -- (ajc);
+		\draw [arrow]      (aod) -- (pju);
+		\draw [arrow]      (aod) -- (pfbreco);
+		\draw [arrow]      (aod) -- (otf);
+		\draw [arrow]      (miniaod) -- (default_jec);
+		\draw [arrowrec]   (miniaod) -- (tbx);
+		\draw [arrow]      (miniaod) -- (ajc);
+		\draw [arrownorec] (miniaod) -- (pju);
+		\draw [arrow]      (miniaod) -- (pfbreco);
+		\draw [arrow]      (miniaod) -- (otf);
+
+		\draw [arrow]      (default_jec) -- (prod1);
+		\draw [arrowrec]   (tbx) -- (prod1);
+		\draw [arrow]      (ajc) -- (prod1);
+		\draw [arrownorec] (pju) -- (prod1);
+		\draw [arrow]      (pfbreco) -- (prod1);
+		\draw [arrow]      (otf) -- (prod1);
+		\draw [arrow]      (default_jec) -- (otf1);
+		\draw [arrow]      (tbx) -- (otf1);
+		\draw [arrow]      (ajc) -- (otf1);
+		\draw [arrow]      (pju) -- (otf1);
+		\draw [arrow]      (pfbreco) -- (otf1);
+		\draw [arrow]      (otf) -- (otf1);
+
+		\draw [arrownorec] (prod1) -- (prod2);
+		\draw [arrow]      (prod1) -- (otf2);
+		\draw [arrow]      (otf1) -- (prod2);
+		\draw [arrow]      (otf1) -- (otf2);
+
+		\draw[arrownorec] (current bounding box.north) ++(-3em, -0.5em) -- ++(2em, 0) node[right, black, font=\scriptsize] {Favorite (no reclustering)};
+		\draw[arrowrec]   (current bounding box.north) ++(-3em, -1.5em) -- ++(2em, 0) node[right, black, font=\scriptsize] {Favorite (with reclustering)};
+		\draw[arrow]      (current bounding box.north) ++(-3em, -2.5em) -- ++(2em, 0) node[right, black, font=\scriptsize] {Other option};
+
+	\end{tikzpicture}
+\end{frame}

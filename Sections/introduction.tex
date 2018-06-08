@@ -1,4 +1,4 @@
-%!TEX root = ../2015_06_16-HATS-LPC-JEC.tex
+%!TEX root = ../2018_06_13-HATS-LPC-JEC.tex
 
 \subsection{Why?}
 \frame{
@@ -48,16 +48,16 @@
 			\end{itemize}
 		\end{itemize}
 	\end{block}
-	\vspace*{-0.15cm}
+	\vspace*{-0.2cm}
 	\begin{center}
-		\includegraphics[width=10cm]{images/jecs.png}
+		\includegraphics[width=9.5cm]{images/jecs.png}
 	\end{center}
 }
 %---------------------------------------------------------------------------------------------------------------------------------------
-\frame{
+\begin{frame}<1>[label=frame:factorized_approach_l1]
 	\frametitle{JECs: A Factorized Approach}
 %	\begin{textblock}{12.3}(0.25,0.7) %alexx
-	\begin{textblock}{.9}(0.05,0.085) %ben
+	\begin{textblock}{.9}(0.05,0.075) %ben
 		\begin{figure}
 			\scalebox{.9}{
 			  \includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
@@ -65,7 +65,7 @@
 			\label{fig:factorized_approach}
 		\end{figure}
 	\end{textblock}
-	\vspace*{2.4cm}
+	\vspace*{2.3cm}
 	\begin{block}{Pileup (PU) Corrections}
 		\begin{itemize}
 			\footnotesize
@@ -74,7 +74,7 @@
                                 \footnotesize
                                 \item {\color{orange} Offset} $\equiv p_{T}^{with\ PU} - p_{T}^{no\ PU}$
                         \end{itemize}
-			\item The goal of the pileup (\textbf{L1}) corrections is to remove the energy inside a jet coming from pile-up events
+			\item PU (\textbf{L1}) corrections seek to remove the energy inside a jet coming from PU interactions
 			\begin{itemize}
 				\footnotesize
 				\item L1Offset - No longer used
@@ -86,208 +86,30 @@
 			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
 		\end{itemize}
 	\end{block}
-}
-%---------------------------------------------------------------------------------------------------------------------------------------
-\frame{
-	\frametitle{JECs: A Factorized Approach}
-        \begin{textblock}{.9}(0.05,0.085)
-		\begin{figure}
-			\scalebox{.9}{
-			%	\input{images/JEC_levels}
-				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
-			}
-			\label{fig:factorized_approach}
-		\end{figure}
-	\end{textblock}
-	\vspace*{2.4cm}
-	\begin{block}{Pileup (PU) Corrections}
-		\begin{itemize}
-			\footnotesize
-			\item Pileup is the additional energy in a jet coming from all interactions \textbf{except} the primary vertex (PV) and it's underlying event (UE)
-			\item The goal of the pileup (\textbf{L1}) corrections is to remove the energy inside a jet coming from pile-up events
-			\begin{itemize}
-				\footnotesize
-				\item L1Offset - No longer used
-				\item L1FastJet - The current standard
-				\item Charged Hardron Subtraction - Remove the charged hadrons inside a jet which have a track coming from a pileup vertex
-				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block
-			\end{itemize}
-			\item Done on an {\color{blue}event-by-event} basis ($\rho$, $\mu$) and a {\color{red}jet-by-jet} basis ($p_{T}$, $\eta$, jet area)
-			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
-		\end{itemize}
-	\end{block}
-	\begin{textblock}{.9}(0.05,.25)
-		\begin{figure}
-			\includegraphics[width=0.5\textwidth]{images/JME-16-001/OffMeantnpuRef_BB_ak4pfchs_no2000_beforeL1.pdf}
-			\includegraphics[width=0.5\textwidth]{images/JME-16-001/OffMeantnpuRef_BB_ak4pfchs_no2000_afterL1.pdf}
-			\label{fig:OffMeantnpuRef}
-		\end{figure}
-	\end{textblock}
-}
-%---------------------------------------------------------------------------------------------------------------------------------------
-\frame{
-	\frametitle{JECs: A Factorized Approach}
-        \begin{textblock}{.9}(0.05,0.085)
-		\begin{figure}
-			\scalebox{.9}{
-			%	\input{images/JEC_levels}
-				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
-			}
-			\label{fig:factorized_approach}
-		\end{figure}
-	\end{textblock}
-	\vspace*{2.4cm}
-	\begin{block}{Pileup (PU) Corrections}
-		\begin{itemize}
-			\footnotesize
-			\item Pileup is the additional energy in a jet coming from all interactions \textbf{except} the primary vertex (PV) and it's underlying event (UE)
-			\item The goal of the pileup (\textbf{L1}) corrections is to remove the energy inside a jet coming from pile-up events
-			\begin{itemize}
-				\footnotesize
-				\item L1Offset - No longer used
-				\item L1FastJet - The current standard
-				\item Charged Hardron Subtraction - Remove the charged hadrons inside a jet which have a track coming from a pileup vertex
-				\item Pileup Per Particle Identification (PUPPI) - the new kid on the block 
-			\end{itemize}
-			\item Done on an {\color{blue}event-by-event} basis ($\rho$, $\mu$) and a {\color{red}jet-by-jet} basis ($p_{T}$, $\eta$, jet area)
-			\item The first step in calculating these is MC based, but the corrections for data are scaled with L1Residual corrections
-		\end{itemize}
-	\end{block}
-	\begin{textblock}{.9}(0.05,.25)
-		\begin{figure}
-                        \includegraphics[width=0.5\textwidth]{images/JME-16-001/OffMeantnpuRef_BB_ak4pfchs_no2000_beforeL1.pdf}
-                        \includegraphics[width=0.5\textwidth]{images/JME-16-001/OffMeantnpuRef_BB_ak4pfchs_no2000_afterL1.pdf}
-			\label{fig:OffMeantnpuRef}
-		\end{figure}
-	\end{textblock}
+	\only<2>{
 		\begin{textblock}{.9}(0.05,.25)
-		\begin{figure}
-			\includegraphics[width=0.5\textwidth]{images/Can0_noPreliminary.pdf} %no 13 TeV version
-			\includegraphics[width=0.5\textwidth]{images/Can1_noPreliminary.pdf} %no 13 TeV version
-		\end{figure}
-	\end{textblock}
-}
-%---------------------------------------------------------------------------------------------------------------------------------------
-\frame{
-	\frametitle{JECs: A Factorized Approach}
-        \begin{textblock}{.9}(0.05,0.085)
-		\begin{figure}
-			\scalebox{.9}{
-			%	\input{images/JEC_levels}
-				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
-			}
-			\label{fig:factorized_approach}
-		\end{figure}
-	\end{textblock}
-	\vspace*{2.4cm}
-	\begin{block}{MC-truth $\eta$ \& $p_{T}$ Corrections}
-		\begin{itemize}
-			\footnotesize
-			\item L2Relative \& L3Absolute corrections seek to make the jet response flat vs $p_{T}$ and $\eta$
-			\item During this step jets are corrected back to particle level so that the corrected jet $p_{T}$ is equal, on average, to the GenJet $p_{T}$
-			\item Every effort is taken to make these corrections independent of the jet $p_{T}$ spectrum
-			\item Derived on a QCD sample, but must be applicable to all physics processes
-		\end{itemize}			
-	\end{block}
-	\vspace*{-0.15cm}
-	\begin{alertblock}{Bombshell \#1}
-		\footnotesize
-		\begin{itemize}
-			\item The L2Relative \& L3Absolute corrections are derived in one step
-			\item They used to be separate, but we have combined them into one set of constants contained in the L2Relative payload
-			\item The L3Absolute payload now contains a multiplicative factor of one, but is still there for future use
-		\end{itemize}
-	\end{alertblock}
-}
-%---------------------------------------------------------------------------------------------------------------------------------------
-\frame{
-	\frametitle{JECs: A Factorized Approach}
-        \begin{textblock}{.9}(0.05,0.085)
-		\begin{figure}
-			\scalebox{.9}{
-			%	\input{images/JEC_levels}
-				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
-			}
-			\label{fig:factorized_approach}
-		\end{figure}
-	\end{textblock}
-	\vspace*{2.4cm}
-	\begin{block}{MC-truth $\eta$ \& $p_{T}$ Corrections}
-		\begin{itemize}
-			\footnotesize
-			\item L2Relative \& L3Absolute corrections seek to make the jet response flat vs $p_{T}$ and $\eta$
-			\item During this step jets are corrected back to particle level so that the corrected jet $p_{T}$ is equal, on average, to the GenJet $p_{T}$
-			\item Every effort is taken to make these corrections independent of the jet $p_{T}$ spectrum
-			\item Derived on a QCD sample, but must be applicable to all physics processes
-		\end{itemize}			
-	\end{block}
-	\vspace*{-0.15cm}
-	\begin{alertblock}{Bombshell \#1}
-		\footnotesize
-		\begin{itemize}
-			\item The L2Relative \& L3Absolute corrections are derived in one step
-			\item They used to be separate, but we have combined them into one set of constants contained in the L2Relative payload
-			\item The L3Absolute payload now contains a multiplicative factor of one, but is still there for future use
-		\end{itemize}
-	\end{alertblock}
-	
-	\begin{textblock}{.9}(0.05,.25)
-		\begin{figure}
-			\includegraphics[width=0.5\textwidth]{images/Can1_noPreliminary.pdf}  %no 13 TeV version
-			\includegraphics[width=0.5\textwidth]{images/Can2_noPreliminary.pdf}  %no 13 TeV version
-			\label{fig:closurel1l2l3}
-		\end{figure}
-	\end{textblock}
-}
-%---------------------------------------------------------------------------------------------------------------------------------------
-\frame{
-	\frametitle{JECs: A Factorized Approach}
-        \begin{textblock}{.9}(0.05,0.085)
-		\begin{figure}
-			\scalebox{.9}{
-			%	\input{images/JEC_levels}
-				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
-			}
-			\label{fig:factorized_approach}
-		\end{figure}
-	\end{textblock}
-	\vspace*{2.4cm}
-	\begin{block}{MC-truth $\eta$ \& $p_{T}$ Corrections}
-		\begin{itemize}
-			\footnotesize
-			\item L2Relative \& L3Absolute corrections seek to make the jet response flat vs $p_{T}$ and $\eta$
-			\item During this step jets are corrected back to particle level so that the corrected jet $p_{T}$ is equal, on average, to the GenJet $p_{T}$
-			\item Every effort is taken to make these corrections independent of the jet $p_{T}$ spectrum
-			\item Derived on a QCD sample, but must be applicable to all physics processes
-		\end{itemize}			
-	\end{block}
-	\vspace*{-0.15cm}
-	\begin{alertblock}{Bombshell \#1}
-		\footnotesize
-		\begin{itemize}
-			\item The L2Relative \& L3Absolute corrections are derived in one step
-			\item They used to be separate, but we have combined them into one set of constants contained in the L2Relative payload
-			\item The L3Absolute payload now contains a multiplicative factor of one, but is still there for future use
-		\end{itemize}
-	\end{alertblock}
-	
-	\begin{textblock}{.9}(0.05,.25)
-		\begin{figure}
-			\includegraphics[width=0.5\textwidth]{images/Can1_noPreliminary.pdf} %no 13 TeV version
-			\includegraphics[width=0.5\textwidth]{images/Can2_noPreliminary.pdf} %no 13 TeV version
-			\label{fig:closurel1l2l3}
-		\end{figure}
-	\end{textblock}
+			\begin{figure}
+				\includegraphics[width=0.5\textwidth]{images/JME-16-001/OffMeantnpuRef_BB_ak4pfchs_no2000_beforeL1.pdf}
+				\includegraphics[width=0.5\textwidth]{images/JME-16-001/OffMeantnpuRef_BB_ak4pfchs_no2000_afterL1.pdf}
+				\label{fig:OffMeantnpuRef}
+			\end{figure}
+		\end{textblock}
+	}
+	\only<3>{
 		\begin{textblock}{.9}(0.05,.25)
-		\begin{figure}
-			\includegraphics[width=0.5\textwidth]{images/JME-16-001/ClosureVsRefPt_Overview_ak4pfchs_no2000_afterL1L2L3.pdf}
-		\end{figure}
-	\end{textblock}
-}
+			\begin{figure}
+				\includegraphics[width=0.5\textwidth]{images/Can0_noPreliminary.pdf} %no 13 TeV version
+				\includegraphics[width=0.5\textwidth]{images/Can1_noPreliminary.pdf} %no 13 TeV version
+			\end{figure}
+		\end{textblock}
+	}
+\end{frame}
+\againframe<2>{frame:factorized_approach_l1}
+\againframe<3>{frame:factorized_approach_l1}
 %---------------------------------------------------------------------------------------------------------------------------------------
-\frame{
+\begin{frame}<1>[label=frame:factorized_approach_l2l3]
 	\frametitle{JECs: A Factorized Approach}
-        \begin{textblock}{.9}(0.05,0.085)
+        \begin{textblock}{.9}(0.05,0.075)
 		\begin{figure}
 			\scalebox{.9}{
 			%	\input{images/JEC_levels}
@@ -296,14 +118,52 @@
 			\label{fig:factorized_approach}
 		\end{figure}
 	\end{textblock}
-	\vspace*{2.4cm}
-%	\begin{block}{Electromagnetic Energy Fraction Correction}
-%		\begin{itemize}
-%			\footnotesize
-%			\item The goal of the \textbf{defunct} L4 correction was to make the jet reponse uniform vs electromagnetic fraction
-%		\end{itemize}
-%	\end{block}
-%	\vspace*{-0.15cm}
+	\vspace*{2.3cm}
+	\begin{block}{MC-truth $\eta$ \& $p_{T}$ Corrections}
+		\begin{itemize}
+			\footnotesize
+			\item L2Relative \& L3Absolute corrections seek to make the jet response flat vs $\eta$ and $p_{T}$
+			\begin{itemize}
+				\item Derived in one step, but multiple text files created for backwards compatibility
+				\item We have combined them into one set of constants contained in the L2Relative payload
+				\item The L3Absolute payload now contains a multiplicative factor of one
+			\end{itemize}
+			\item During this step jets are corrected back to particle level so that the corrected jet $p_{T}$ is equal, on average, to the GenJet $p_{T}$
+			\item Every effort is taken to make these corrections independent of the jet $p_{T}$ spectrum
+			\item Derived on a QCD sample, but must be applicable to all physics processes
+		\end{itemize}			
+	\end{block}
+	\only<2>{
+		\begin{textblock}{.9}(0.05,.25)
+			\begin{figure}
+				\includegraphics[width=0.5\textwidth]{images/Can1_noPreliminary.pdf}  %no 13 TeV version
+				\includegraphics[width=0.5\textwidth]{images/Can2_noPreliminary.pdf}  %no 13 TeV version
+				\label{fig:closurel1l2l3}
+			\end{figure}
+		\end{textblock}
+	}
+	\only<3>{
+		\begin{textblock}{.9}(0.05,.25)
+			\begin{figure}
+				\includegraphics[width=0.5\textwidth]{images/JME-16-001/ClosureVsRefPt_Overview_ak4pfchs_no2000_afterL1L2L3.pdf}
+			\end{figure}
+		\end{textblock}
+	}
+\end{frame}
+\againframe<2>{frame:factorized_approach_l2l3}
+\againframe<3>{frame:factorized_approach_l2l3}
+%---------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}<1>[label=frame:factorized_approach_l5]
+	\frametitle{JECs: A Factorized Approach}
+        \begin{textblock}{.9}(0.05,0.075)
+		\begin{figure}
+			\scalebox{.9}{
+				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
+			}
+			\label{fig:factorized_approach}
+		\end{figure}
+	\end{textblock}
+	\vspace*{2.3cm}
 	\begin{block}{Jet Flavor Correction}
 		\begin{itemize}
 		\footnotesize
@@ -322,57 +182,20 @@
 			\end{itemize}
 		\end{itemize}
 	\end{block}
-}
-%---------------------------------------------------------------------------------------------------------------------------------------
-\frame{
-	\frametitle{JECs: A Factorized Approach}
-        \begin{textblock}{.9}(0.05,0.085)
-		\begin{figure}
-			\scalebox{.9}{
-			%	\input{images/JEC_levels}
-				\includegraphics[width=\textwidth]{images/CMS_JEC_levels.pdf}
-			}
-			\label{fig:factorized_approach}
-		\end{figure}
-	\end{textblock}
-	\vspace*{2.4cm}
-%	\begin{block}{Electromagnetic Energy Fraction Correction}
-%		\begin{itemize}
-%			\footnotesize
-%			\item The goal of the \textbf{defunct} L4 correction was to make the jet reponse uniform vs electromagnetic fraction
-%		\end{itemize}
-%	\end{block}
-%	\vspace*{-0.15cm}
-	\begin{block}{Jet Flavor Correction}
-		\begin{itemize}
-		\footnotesize
-		\item The goal of this step is to correct for the jet flavor dependence
-		\item The L1+L2+L3 corrections scale the energy of an ``average QCD jet" back to the energy of the corresponding generator level particle jet
-		\begin{itemize}
-			\footnotesize
-			\item Application of the generic L1+L2+L3 corrections to jets with a flavor composition different than that of QCD jets leads to an over- or under-corection
-		\end{itemize}
-		\item L5Flavor corrections are applied on top of the default L1+L2+L3 jet correction and corrects the jet energy back to particle level
-			\begin{itemize}
-				\footnotesize
-				\item L5 corrections act at the particle level. If corrections back to the parton level are required, the L1+L2+L3+L5 corrections can be combined with the L7 corrections
-				\item L5 corrections provide corrections only relative to the ``typical" mix of flavors present in the sample that they have been derived from
-				\item Currently derived on QCD events, but can also be made from top-quark pair events
-			\end{itemize}
-		\end{itemize}
-	\end{block}
-	
+	\only<2>{
 		\begin{textblock}{.9}(0.05,.25)
-		\begin{figure}
-			\includegraphics[width=0.5\textwidth]{images/L5AbsCorGraphs.pdf}  %no 13 TeV version
-			\label{fig:flavor}
-		\end{figure}
-	\end{textblock}
-}
+			\begin{figure}
+				\includegraphics[width=0.5\textwidth]{images/L5AbsCorGraphs.pdf}  %no 13 TeV version
+				\label{fig:flavor}
+			\end{figure}
+		\end{textblock}
+	}
+\end{frame}
+\againframe<2>{frame:factorized_approach_l5}
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
 	\frametitle{JECs: A Factorized Approach}
-        \begin{textblock}{.9}(0.05,0.085)
+        \begin{textblock}{.9}(0.05,0.075)
 		\begin{figure}
 			\scalebox{.9}{
 			%	\input{images/JEC_levels}
@@ -381,14 +204,14 @@
 			\label{fig:factorized_approach}
 		\end{figure}
 	\end{textblock}
-	\vspace*{2.4cm}
+	\vspace*{2.3cm}
 	\begin{block}{Parton Jet Correction}
 		\begin{itemize}
 			\item The optional L7 parton correction is applied on top of the default L1+L2+L3 (L5) correction and corrects back to the parton level.
 			\item This means that the corrected jet $p_{T}$ is equal to the originating parton $p_{T}$, on average More details \href{https://twiki.cern.ch/twiki/bin/view/CMS/IntroToJEC\#L7_Parton_Jet_Correction}{\color{blue}{here}}.
 		\end{itemize}
 	\end{block}
-
+	\vspace*{-0.1cm}
 	\begin{block}{Residuals Corrections}
 		\begin{itemize}
 			\item The residual calibration of data:.
@@ -419,11 +242,11 @@
 			\begin{block}{}
 				\begin{itemize}
 					\footnotesize
-                                      \item $\eta$-dependent correction  
-                                      \item Two methods using dijet events: $p_T$ balance and MET Projection Fraction (MPF)
-				      \item Done in bins of $\alpha={p_{T}}_3/{p_{T}}_{avg}$ and extrapolated to 0 
-	                              \item Separate constants for outer end cap (very large data/MC difference) and HF (very small data/MC difference)
-                                        \item \href{https://indico.cern.ch/event/544654/contributions/2210386/attachments/1296039/1937185/20160625_JEC_L2Res_CMSSW80X_2016Data_4_0fb_addJER.pdf}{\color{blue}\scriptsize{Latest results presented last week}}.  On right: MPF method with Pythia8
+                    \item $\eta$-dependent correction  
+                    \item Two methods using dijet events: $p_T$ balance and MET Projection Fraction (MPF)
+				    \item Done in bins of $\alpha={p_{T}}_3/{p_{T}}_{avg}$ and extrapolated to 0 
+	                \item Separate constants for outer end cap (very large data/MC difference) and HF (very small data/MC difference)
+                    \item \href{https://indico.cern.ch/event/544654/contributions/2210386/attachments/1296039/1937185/20160625_JEC_L2Res_CMSSW80X_2016Data_4_0fb_addJER.pdf}{\color{blue}\scriptsize{Latest results presented last week}}.  On right: MPF method with Pythia8
 				\end{itemize}
 			\end{block}
 		\column{0.56\textwidth}
@@ -447,26 +270,23 @@
 	\framesubtitle{L3Residual Corrections ($p_T$)}
 	\vspace*{-0.24cm}
 	\begin{columns}[T]
-		\column{0.5\textwidth}
-			%\begin{textblock}{2.5}(0.25,1.5){\color{red}\scriptsize{$Z\left(\mu\mu\right)+jet$\\$Z\left(ee\right)+jet$\\$\gamma+jet$\\(multijet events)}}\end{textblock}
+		\hspace*{0.4cm}\column{0.5\textwidth}
 			\vspace*{-0.4cm}
 			\begin{figure}[T]
 				\centering
 				\includegraphics[width=1.0\textwidth]{images/unc2.png}%
-				%\vspace*{-0.4cm}
-%				\caption{\footnotesize{Sketch by H. Kirschenmann}}
 				\label{fig:AbsoluteCalibration}
 			\end{figure}
-                        \vspace{-.35cm}
+            \vspace{-.35cm}
 			\begin{block}{}
-			\begin{itemize}
-				\footnotesize
-                                \item $p_T$-dependent correction
-				\item Use $\gamma$+jet or $Z(\mu\mu/ee)$+jet events
-                                \item Again use $p_T$ balancing or MPF methods, done in bins of $\alpha={p_{T}}_2/{p_{T}}_{Z}$ and extrapolated to 0 
-                                \item Latest \href{https://indico.cern.ch/event/544654/contributions/2210383/attachments/1295640/1936919/2016-06-22-JERC-virtual-meeting-cheidecker.pdf}{\color{blue}\scriptsize{Z+jet}} and \href{https://indico.cern.ch/event/544654/contributions/2210385/attachments/1296031/1932394/Giugno-21-2016_-_Federico_Preiato.pdf}{\color{blue}\scriptsize{$\gamma$+jet}} results presented last week.  On right: $Z(\mu\mu)+jet$
-                                 \item Third method, Multijet Balance (MJB), using multijet events constrains high $p_T$
-			\end{itemize}
+				\begin{itemize}
+					\footnotesize
+            	    \item $p_T$-dependent correction
+					\item Use $\gamma$+jet or $Z(\mu\mu/ee)$+jet events
+            	    \item Again use $p_T$ balancing or MPF methods, done in bins of $\alpha={p_{T}}_2/{p_{T}}_{Z}$ and extrapolated to 0 
+            	    \item Latest \href{https://indico.cern.ch/event/544654/contributions/2210383/attachments/1295640/1936919/2016-06-22-JERC-virtual-meeting-cheidecker.pdf}{\color{blue}\scriptsize{Z+jet}} and \href{https://indico.cern.ch/event/544654/contributions/2210385/attachments/1296031/1932394/Giugno-21-2016_-_Federico_Preiato.pdf}{\color{blue}\scriptsize{$\gamma$+jet}} results presented last week.  On right: $Z(\mu\mu)+jet$
+	                \item Third method, Multijet Balance (MJB), using multijet events constrains high $p_T$
+				\end{itemize}
 			\end{block}
 		\column{0.56\textwidth}
 		\vspace*{-0.4cm}
@@ -484,47 +304,42 @@
 
 	\end{columns}
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
 	\frametitle{Global Fit}
-	\vspace*{-0.24cm}
+	\vspace*{-0.5cm}
 	\begin{columns}[T]
-		\column{0.4\textwidth}
+		\hspace*{0.4cm}\column{0.4\textwidth}
 		\begin{block}{}
-		  \begin{itemize}
-		    \footnotesize
-		  \item The final absolute jet $p_T$ scale is taken from a global fit to Z($\mu\mu$)+jet, Z($ee$)+jet, $\gamma$+jet, and multijet data
-                  \item Choose in advance between $p_T$ balancing or MPF for Z($\mu\mu$)+jet, Z($ee$)+jet, and $\gamma$+jet
-                  \item Covers full $p_T$ range and reduces uncertainty
-                  \item On right, solid line shows central value and dotted lines show statistical uncertainty of the fit
-		  \end{itemize}
+		  	\begin{itemize}
+		    	\footnotesize
+		  		\item The final absolute jet $p_T$ scale is taken from a global fit to Z($\mu\mu$)+jet, Z($ee$)+jet, $\gamma$+jet, and multijet data
+            	\item Choose in advance between $p_T$ balancing or MPF for Z($\mu\mu$)+jet, Z($ee$)+jet, and $\gamma$+jet
+            	\item Covers full $p_T$ range and reduces uncertainty
+            	\item On right, solid line shows central value and dotted lines show statistical uncertainty of the fit
+		  	\end{itemize}
 		\end{block}
 		\column{0.6\textwidth}
 		\vspace*{-0.4cm}
 		\begin{figure}[T]
-		  \centering
-		  \includegraphics[width=.62\textwidth]{images/globalfit.pdf}
-		  \label{fig:L3Residual}
+		  	\centering
+		  	\includegraphics[width=.62\textwidth]{images/globalfit.pdf}
+		  	\label{fig:L3Residual}
 		\end{figure}
 		\vspace*{-0.6cm}
 	\end{columns}
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Uncertainties}
 \frame{
 	\frametitle{Many Sources of Uncertainty!}
-
-        \begin{figure}[T]
-          \centering
-          \includegraphics[width=.4\textwidth]{images/all_unc.pdf}
-          \label{fig:all_unc}
-        \end{figure}
-        
+    \begin{figure}[T]
+        \centering
+        \includegraphics[width=.4\textwidth]{images/all_unc.pdf}
+        \label{fig:all_unc}
+    \end{figure} 
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Grouped Uncertainties}
+%---------------------------------------------------------------------------------------------------------------------------------------
 \frame{
   \frametitle{Grouped Uncertainties}
   
@@ -552,98 +367,21 @@
   \end{columns}
   
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%---------------------------------------------------------------------------------------------------------------------------------------
-\frame{
-\frametitle{Mandatory Jet Energy Corrections at CMS}
-%\includegraphics[width=10cm]{images/jecs.png}
-\begin{itemize}
-\item The minimum correction levels to be applied on any CMS analysis using Monte Carlo and Data are:
-
-\begin{itemize}
-\item \textbf{Monte Carlo:}\\
-{\color{red}L1(Pile Up) + L2(Relative) + L3(Absolute)}
-\item \textbf{Data:}\\
-{\color{red}L1(Pile Up) + L2(Relative) + L3(Absolute) + L2L3 Residuals}
-\end{itemize}
-\item Any analysis might place higher correction levels if necessary and available. 
-\item User can check \href{https://twiki.cern.ch/twiki/bin/view/CMS/JECDataMC}{https://twiki.cern.ch/twiki/bin/view/CMS/JECDataMC} to learn about the ``Recommended Jet Energy Corrections and Uncertainties for Data and MC".
-\end{itemize}
-
-}
-%---------------------------------------------------------------------------------------------------------------------------------------
-%\subsubsection{JER Uncertainty Sources}
-%\frame{
-%\frametitle{JES and Uncertainties}
-%\begin{block}{Description}
-%\begin{itemize}
-%\item The JEC uncertainty sources provide detailed information on JEC uncertainties for use in statistical data analysis. The sources are fully uncorrelated between themselves, but describe JEC variations that are fully correlated within a given source.
-%\item FIX ME: Should we include how uncertainties are calculated? How they are applied? Sources?
-%\end{itemize}
-%\end{block}
-%}
-%---------------------------------------------------------------------------------------------------------------------------------------
-\subsection{Collections}
-\frame{
-	\frametitle{Jet Collections Supported by the JERC Group}
-	\begin{itemize}
-		\item Clustering algorithms:
-		\begin{itemize}
-			\item Anti-k$_{T}$
-		\end{itemize}
-		\item Cone sizes:
-		\begin{itemize}
-			\item R=0.4, 0.8
-		\end{itemize}
-		\item Jet types:
-		\begin{itemize}
-			\item PF - Still in use
-			\item PF+CHS - Default
-			\item PF+PUPPI - New kid on the block
-			\item Calo 
-			\item Jet Plus Track (JPT)
-		\end{itemize}
-	\end{itemize}
-}
-%---------------------------------------------------------------------------------------------------------------------------------------
-%---------------------------------------------------------------------------------------------------------------------------------------
-\subsection{JEC Release Procedure}
-\frame{
-	\frametitle{JEC Release Procedure}
-	\begin{itemize}
-          \item Announced on ``JetMET: Jet Energy Scale'' hypernews
-          \item Described on \href{https://twiki.cern.ch/twiki/bin/view/CMS/JECDataMC}{{\color{blue}https://twiki.cern.ch/twiki/bin/view/CMS/JECDataMC}}
-          \item {Important to read the ``Notes'' associated to an update, which often describe only partial updates}
-
-                \begin{figure}
-                  \scalebox{.9}{
-                          \includegraphics[width=\textwidth]{images/jec_twiki.png}
-                        }
-                \end{figure}
-
-	\end{itemize}
-}
 %---------------------------------------------------------------------------------------------------------------------------------------
 \subsection{Jet Energy Resolution Corrections}
 \frame{
 	\frametitle{Jet Energy Resolution Corrections}
-
-		\begin{block}{}
-		  \begin{itemize}
+	\begin{block}{}
+		\begin{itemize}
 		    \footnotesize
-                    \item JECs correct the mean of the jet response distribution, $\langle p_{T}^{measured}/p_{T}^{actual} \rangle$
-                    \item We also have Jet Energy Resolution (JER) corrections to correct the width of the jet response distribution, $\sigma (p_{T}^{measured}/p_{T}^{actual})$
-                    \item JER corrections applied via scale factors
-		  \end{itemize}
-		\end{block}
+            \item JECs correct the mean of the jet response distribution, $\langle p_{T}^{measured}/p_{T}^{actual} \rangle$
+            \item We also have Jet Energy Resolution (JER) corrections to correct the width of the jet response distribution, $\sigma (p_{T}^{measured}/p_{T}^{actual})$
+            \item JER corrections are applied via deterministic scale factors
+		\end{itemize}
+	\end{block}
 
-		\begin{figure}[T]
-		  \centering
-		  \includegraphics[width=.8\textwidth]{images/jer.pdf}
-		\end{figure}
-
-
+	\begin{figure}[T]
+	    \centering
+		\includegraphics[width=.8\textwidth]{images/jer.pdf}
+	\end{figure}
 }
-%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**%**

@@ -1,17 +1,43 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{Presentation}[2013/02/18 v1.1 My custom Beamer-based class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
-\ProcessOptions
-\LoadClass{beamer}					% use "amsart" instead of "article" for AMSLaTeX format
 
+\newcommand*\parenttheme{boulder}
+\newcommand*\parentoptions{}
+\DeclareOption{standardtheme}{%
+   \renewcommand*\parenttheme{boulder}%
+   \renewcommand*\parentoptions{ULogo,expLogo=CMS}%
+}
+\DeclareOption{bouldertheme}{%
+   \renewcommand*\parenttheme{boulder}%
+   \renewcommand*\parentoptions{ULogo,expLogo=CMS}%
+}
+\DeclareOption{boulderthemeextendedtitleline}{%
+   \renewcommand*\parenttheme{boulder}%
+   \renewcommand*\parentoptions{ULogo,expLogo=CMS,extendedtitleline=5ex}%
+}
+\DeclareOption{tamutheme}{%
+   \renewcommand*\parenttheme{TAMU}%
+   \renewcommand*\parentoptions{ULogo,expLogo=CMS}%
+}
+\DeclareOption{defaulttheme}{%
+   \renewcommand*\parenttheme{default}%
+   \renewcommand*\parentoptions{}%
+}
+\ExecuteOptions{standardtheme}
+\ProcessOptions*
+\LoadClass{beamer}
+\usetheme[\parentoptions]{\parenttheme}
+%\useoutertheme{infolines} %sucky design. Rather not use
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Modifications %
+%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{etex}
 
 %%%%%%%%%%%%%%%%%%%%
 % Page style/Theme %
 %%%%%%%%%%%%%%%%%%%%
-%\usetheme{Warsaw} %Nice design
-\usetheme[ULogo,expLogo=CMS]{TAMU} %Nice design
-%\useoutertheme{infolines} %sucky design. Rather not use
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{bibliography item}[text]
 %\setbeamertemplate{footline}[page number]
@@ -37,11 +63,12 @@
 \RequirePackage{epsfig}
 \RequirePackage{color}
 \RequirePackage{tikz}
-\usetikzlibrary{arrows,shapes,shapes.multipart,backgrounds,calc,decorations.text,decorations.pathreplacing,matrix,shadings,spy}
+\usetikzlibrary{arrows,shapes,shapes.multipart,backgrounds,calc,decorations.text,decorations.pathreplacing,matrix,shadings,spy,shadows}
 \tikzstyle{every picture}+=[remember picture]
 \tikzstyle{na} = [baseline=-.5ex]
 \tikzstyle{arrow} = [draw, -latex']
 \tikzstyle{line} = [draw, -]
+\usepackage[framemethod=tikz]{mdframed}
 \RequirePackage{lipsum}
 \RequirePackage{transparent}
 %\RequirePackage[percent]{overpic} % to overlay text in pictures
@@ -50,6 +77,14 @@
 \RequirePackage[printwatermark]{xwatermark}
 \RequirePackage{standalone}
 \RequirePackage{pdfpages}
+\RequirePackage{tcolorbox}
+
+%%%%%%%%%%
+% Colors %
+%%%%%%%%%%
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
 
 %%%%%%%%%%%%%%%%
 % Math/Symbols %
@@ -65,12 +100,13 @@
 %%%%%%%%%
 \RequirePackage{enumerate}                              % Allows one to modify the enumerate environment
 
-%Captions/References
-%\RequirePackage{caption}
+%%%%%%%%%%%%%%%%%%%%%%%
+% Captions/References %
+%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{subcaption}
-\captionsetup{compatibility=false} %added in 2016
 \captionsetup[figure]{labelformat=empty}
 %\RequirePackage{hyperref} %Already loaded by the Beamer package
+\hypersetup{colorlinks,linkcolor=,urlcolor=blue}
 
 %%%%%%%%%%
 % Tables %
@@ -85,10 +121,13 @@
 %%%%%%%%%%%%%%%%%%
 \RequirePackage{pifont}% http://ctan.org/pkg/pifont
 \RequirePackage{setspace}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}% http://ctan.org/pkg/lm
 
 %%%%%%%%%%%%%%%%
 % Environments %
 %%%%%%%%%%%%%%%%
+\RequirePackage{listings}
 \RequirePackage{shadowtext}
 \RequirePackage{fancyvrb}
 \RequirePackage{environ}% defines `NewEnviron`
@@ -124,6 +163,83 @@
 \node<#1>[invisib=#2] (X) {\printthistext{\thethistext}};
 }
 
+\tcbuselibrary{skins,breakable}
+\definecolor{tamumaroon}{HTML}{500000} % changed this
+\definecolor{tamugray}{HTML}{8F8F8c} % changed this
+\definecolor{tamulightgray}{HTML}{E3E3E3}
+\definecolor{tamugold}{HTML}{998031}
+\definecolor{tamubeige}{HTML}{EDDD9E}
+\newenvironment{myexampleblock}[1]{%
+    \tcolorbox[beamer,%
+    noparskip,breakable,
+    colback=tamulightgray,colframe=ForestGreen,%
+    colbacklower=tamulightgray,%
+    title=#1]}%
+    {\endtcolorbox}
+\newenvironment{mytamublock}[1]{%
+    \tcolorbox[beamer,%
+    noparskip,breakable,
+    colback=tamulightgray,colframe=tamumaroon,%
+    colbacklower=tamugray!75!Maroon,%
+    title=#1]}%
+    {\endtcolorbox}
+\newenvironment{myalertblock}[1]{%
+    \tcolorbox[beamer,%
+    noparskip,breakable,
+    colback=red,colframe=tamumaroon,%
+    colbacklower=tamumaroon!75!Maroon,%
+    title=#1]}%
+    {\endtcolorbox}
+\newenvironment{mynoteblock}[1]{%
+    \tcolorbox[beamer,%
+    noparskip,breakable,
+    colback=tamubeige,colframe=tamugold,%
+    colbacklower=tamugray!75!black,%
+    title=#1]}%
+    {\endtcolorbox}
+\newenvironment{myblock}[1]{%
+    \tcolorbox[beamer,%
+    noparskip,breakable,
+    colback=tamulightgray,colframe=NavyBlue,%
+    colbacklower=tamulightgray,%
+    title=#1]}%
+    {\endtcolorbox}
+
+% Defining a new coordinate system for the page:
+%
+% --------------------------
+% |(-1,1)    (0,1)    (1,1)|
+% |                        |
+% |(-1,0)    (0,0)    (1,0)|
+% |                        |
+% |(-1,-1)   (0,-1)  (1,-1)|
+% --------------------------
+\makeatletter
+\def\parsecomma#1,#2\endparsecomma{\def\page@x{#1}\def\page@y{#2}}
+\tikzdeclarecoordinatesystem{page}{
+    \parsecomma#1\endparsecomma
+    \pgfpointanchor{current page}{north east}
+    % Save the upper right corner
+    \pgf@xc=\pgf@x%
+    \pgf@yc=\pgf@y%
+    % save the lower left corner
+    \pgfpointanchor{current page}{south west}
+    \pgf@xb=\pgf@x%
+    \pgf@yb=\pgf@y%
+    % Transform to the correct placement
+    \pgfmathparse{(\pgf@xc-\pgf@xb)/2.*\page@x+(\pgf@xc+\pgf@xb)/2.}
+    \expandafter\pgf@x\expandafter=\pgfmathresult pt
+    \pgfmathparse{(\pgf@yc-\pgf@yb)/2.*\page@y+(\pgf@yc+\pgf@yb)/2.}
+    \expandafter\pgf@y\expandafter=\pgfmathresult pt
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%
+% Physics Symbols %
+%%%%%%%%%%%%%%%%%%%
+\RequirePackage{ptdr-definitions}
+\def\met{{\not\!\!{E_{T}}}}
+
 %%%%%%%%%
 % Other %
 %%%%%%%%%
@@ -142,30 +258,13 @@
 \newcommand{\datedsubsection}[2]{%
 \subsection[#1]{#1 \hfill #2}%
 }
-\newcommand{\PT}{\ensuremath{p_{\mathrm{T}}}\xspace}
-\newcommand{\pt}{\ensuremath{p_{\mathrm{T}}}\xspace}
-%\newcommand{\pt}{\ensuremath{p_\mathrm{T}}}%
-\newcommand{\ET}{\ensuremath{E_{\mathrm{T}}}\xspace}
-\newcommand{\HT}{\ensuremath{H_{\mathrm{T}}}\xspace}
-\newcommand{\et}{\ensuremath{E_{\mathrm{T}}}\xspace}
-\newcommand{\Em}{\ensuremath{E\hspace{-0.6em}/}\xspace}
-\newcommand{\Pm}{\ensuremath{p\hspace{-0.5em}/}\xspace}
-\newcommand{\PTm}{\ensuremath{{p}_\mathrm{T}\hspace{-1.02em}/\kern 0.5em}\xspace}
-\newcommand{\PTslash}{\PTm}
-\newcommand{\ETm}{\ensuremath{E_{\mathrm{T}}^{\text{miss}}}\xspace}
-\newcommand{\MET}{\ETm}
-\newcommand{\ETmiss}{\ETm}
-\newcommand{\ETslash}{\ensuremath{E_{\mathrm{T}}\hspace{-1.1em}/\kern0.45em}\xspace}
-\newcommand{\VEtmiss}{\ensuremath{{\vec E}_{\mathrm{T}}^{\text{miss}}}\xspace}
-\newcommand{\ptvec}{\ensuremath{{\vec p}_{\mathrm{T}}}\xspace}
-\newcommand{\ptvecmiss}{\ensuremath{{\vec p}_{\mathrm{T}}^{\kern1pt\text{miss}}}\xspace}
-\newcommand{\nn}{\\ \nonumber}
+
+\makeatletter
+\@ifundefined{unit}{%
 \newcommand{\unit}[1]{\ensuremath{\mathrm{\:#1}}}
-\newcommand{\ket}[1]{\left| #1 \right>} % for Dirac bras
-\newcommand{\bra}[1]{\left< #1 \right|} % for Dirac kets
-\newcommand{\braket}[2]{\left< #1 \vphantom{#2} \right|  \left. #2 \vphantom{#1} \right>} % for Dirac brackets
-\newcommand{\avg}[1]{\left< #1 \right>} % for average
-\newcommand{\degree}{\ensuremath{^\circ}}
+}{}
+\makeatother
+
 \newcommand{\figwidth}{\textwidth}
 \newcommand{\figwidthminus}{0.95\textwidth}
 \newcommand{\figwidthMC}{0.65\textwidth}
@@ -198,7 +297,6 @@
 \definecolor{darkgreen}{rgb}{0,0.5,0}
 \definecolor{darkblue}{rgb}{0,0,0.5}
 \definecolor{maroon}{RGB}{128,0,0}
-\def\met{{\not\!\!{E_{T}}}}
 \newcommand{\element}[1]
            {
              {#1}
@@ -215,7 +313,12 @@
            {
              $_{#2}^{#1}${#3}
            }
-           
+\newcommand<>{\fullsizegraphic}[1]{
+  \begin{textblock}{0}(0,0.03)
+  \includegraphics[width=\paperwidth,height=0.94\paperheight]{#1}
+  \end{textblock}
+}
+          
 %%%%%%%%%%%%%%%%%%%%%%
 % Redefined Commands %
 %%%%%%%%%%%%%%%%%%%%%%
@@ -344,3 +447,85 @@
   \fi
 }
 \makeatother
+
+%
+% Overlay aware macros which take row-specific macros like \hline or \rowcolor as arguments
+% This way you can have different row colors on different slides
+% There is \rowonly, \rowalt and \rowtemporal which work like \only, \alt and \temporal
+%
+\makeatletter
+\newcommand{\rowonly}{%
+    \noalign{\ifnum0=`}\fi
+    \@rowonly
+}
+\newcommand<>{\@rowonly}[1]{%
+    \only#2%
+        {\ifnum0=`{\fi}#1{\ifnum0=`}\fi}%
+    \ifnum0=`{\fi}%
+    \ignorespaces
+}
+
+\newcommand{\rowalt}{%
+    \noalign{\ifnum0=`}\fi
+    \@rowalt
+}
+\newcommand<>{\@rowalt}[2]{%
+    \alt#3%
+        {\ifnum0=`{\fi}#1{\ifnum0=`}\fi}%
+        {\ifnum0=`{\fi}#2{\ifnum0=`}\fi}%
+    \ifnum0=`{\fi}%
+    \ignorespaces
+}
+
+\newcommand{\rowtemporal}{%
+    \noalign{\ifnum0=`}\fi
+    \@rowtemporal
+}
+\newcommand<>{\@rowtemporal}[3]{%
+    \temporal#4%
+        {\ifnum0=`{\fi}#1{\ifnum0=`}\fi}%
+        {\ifnum0=`{\fi}#2{\ifnum0=`}\fi}%
+        {\ifnum0=`{\fi}#3{\ifnum0=`}\fi}%
+    \ifnum0=`{\fi}%
+    \ignorespaces
+}
+\makeatother
+
+
+%Defining a customlist environment
+% The shortcomings of the list solution can be ameliorated by defining a new customlist environment that
+%   basically redefines the itemize environment from Beamer but also incorporates the \leftmargin and
+%   \itemindent (etc.) parameters.
+% Use as:
+%   \begin{customlist}{2.5em}{0em}
+%      \item Any normal item can go here.
+%   \end{customlist}
+\makeatletter
+\newenvironment{customlist}[2]{
+  \ifnum\@itemdepth >2\relax\@toodeep\else
+      \advance\@itemdepth\@ne%
+      \beamer@computepref\@itemdepth%
+      \usebeamerfont{itemize/enumerate \beameritemnestingprefix body}%
+      \usebeamercolor[fg]{itemize/enumerate \beameritemnestingprefix body}%
+      \usebeamertemplate{itemize/enumerate \beameritemnestingprefix body begin}%
+      \begin{list}
+        {
+            \usebeamertemplate{itemize \beameritemnestingprefix item}
+        }
+        { \leftmargin=#1 \itemindent=#2
+            \def\makelabel##1{%
+              {%  
+                  \hss\llap{{%
+                    \usebeamerfont*{itemize \beameritemnestingprefix item}%
+                        \usebeamercolor[fg]{itemize \beameritemnestingprefix item}##1}}%
+              }%  
+            }%  
+        }
+  \fi
+}
+{
+  \end{list}
+  \usebeamertemplate{itemize/enumerate \beameritemnestingprefix body end}%
+}
+\makeatother
+
