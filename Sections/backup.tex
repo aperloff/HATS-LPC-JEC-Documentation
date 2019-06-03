@@ -1,16 +1,22 @@
-%!TEX root = ../2015_06_16-HATS-LPC-JEC.tex
+%!TEX root = ../2019_06_04-HATS-LPC-JEC.tex
 
-\frame{
+\begin{frame}
 	\begin{block}{}
-		\begin{center}
-			\shadowoffset{2pt}
-			\shadowcolor{tamugold}
-			\shadowtext{{\fontsize{30}{60}\selectfont \textbf{\textcolor{tamumaroon}{Backup Slides}}}}
-			\vspace{1.5mm}
-		\end{center}
-	\end{block}
-}
+        \begin{center}
+            \shadowoffset{2pt}
+            \shadowcolor{CUGold}
+            \shadowtext{{\fontsize{30}{60}\selectfont \textbf{\textcolor{black}{Backup Slides}}}}
+            \vspace{1.5mm}
+        \end{center}
+    \end{block}
+\end{frame}
 %---------------------------------------------------------------------------------------------------------------------------------------
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf[pages=1-6]{hats_pileup2018-backup_slides.pdf}
+}
+\addtocounter{framenumber}{6}
+
 \begin{comment}
 \subsection{How do we guarantee we are correcting what we think we are correcting?}
 \frame{
@@ -38,6 +44,7 @@
 				\small
 				\item Old PileUpPt systematic was 100\% the difference between MC truth (V1) and Random Cone (V0)
 				\begin{itemize}
+					\footnotesize
 					\item MC truth: effective offset inside the jet
 					\item Random Cone: effective offset outside the jet
 					\item Possible inside-outside differences include zero suppression, PF thresholds, calibration non-linearities etc.
@@ -45,7 +52,7 @@
 			\end{itemize}
 		\end{block}
 	\column{0.6\textwidth}
-	\begin{textblock}{6.5}(6,0.9)
+	\begin{textblock}{0.5}(0.48,0.05)
 	\begin{block}{}
 		\begin{itemize}
 			\small
@@ -53,7 +60,7 @@
 		\end{itemize}
 	\end{block}
 	\end{textblock}
-	\vspace*{1.5cm}
+	\vspace*{0.7cm}
 	\begin{myfancyblock}
 		\node[anchor=south west,inner sep=0] (image) at (0,0) {%
 			\hspace*{0.2cm}\includegraphics[width=0.48\textwidth]{images/JECUncert_Summer13_DATA_Summary_AK5PF_Eta00.png}%
@@ -135,8 +142,8 @@
 	\end{block}
 	\begin{myfancyblock}
 		\node[anchor=south west,inner sep=0] (image) at (0,0) {%
-			\includegraphics[width=0.48\textwidth]{images/JECUncert_PileUp_AK7PF_Pt30.pdf}%
-			\includegraphics[width=0.48\textwidth]{images/JECUncert_PileUp_AK7PF_Pt100.pdf}%
+			\includegraphics[width=0.46\textwidth]{images/JECUncert_PileUp_AK7PF_Pt30.pdf}%
+			\includegraphics[width=0.46\textwidth]{images/JECUncert_PileUp_AK7PF_Pt100.pdf}%
 		};
 	\end{myfancyblock}
 }
@@ -162,7 +169,7 @@
 	\end{block}
 	\vspace*{-0.41cm}
 	\begin{center}
-	\includegraphics[width=0.9\textwidth]{images/Eop_BH_3_10.png}%
+	\includegraphics[width=0.8\textwidth]{images/Eop_BH_3_10.png}%
 	\end{center}
 	\column{0.34\textwidth}
 	\includegraphics[width=\textwidth]{images/JECUncert_Time_AK5PFchs_Eta00.pdf}\\

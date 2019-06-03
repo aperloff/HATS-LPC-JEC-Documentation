@@ -2,33 +2,58 @@
 \ProvidesClass{Presentation}[2013/02/18 v1.1 My custom Beamer-based class]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
 
+%
+% Theme Options
+%
 \newcommand*\parenttheme{boulder}
 \newcommand*\parentoptions{}
 \DeclareOption{standardtheme}{%
    \renewcommand*\parenttheme{boulder}%
-   \renewcommand*\parentoptions{ULogo,expLogo=CMS}%
+   \renewcommand*\parentoptions{ULogo=boulderlogoonelinecrop,expLogo=CMS}%
 }
 \DeclareOption{bouldertheme}{%
-   \renewcommand*\parenttheme{boulder}%
-   \renewcommand*\parentoptions{ULogo,expLogo=CMS}%
+   %\renewcommand*\parenttheme{boulder}%
+   %\renewcommand*\parentoptions{ULogo=boulderlogoonelinecrop,expLogo=CMS}%
+}
+\DeclareOption{boulderthemeshortlogo}{%
+   %\renewcommand*\parenttheme{boulder}%
+   \renewcommand*\parentoptions{ULogo=boulderlogoflcrop,expLogo=CMS}%
 }
 \DeclareOption{boulderthemeextendedtitleline}{%
-   \renewcommand*\parenttheme{boulder}%
-   \renewcommand*\parentoptions{ULogo,expLogo=CMS,extendedtitleline=5ex}%
+   %\renewcommand*\parenttheme{boulder}%
+   \renewcommand*\parentoptions{ULogo=boulderlogoonelinecrop,expLogo=CMS,extendedtitleline=5ex}%
 }
 \DeclareOption{tamutheme}{%
    \renewcommand*\parenttheme{TAMU}%
-   \renewcommand*\parentoptions{ULogo,expLogo=CMS}%
+   \renewcommand*\parentoptions{ULogo=boulderlogoonelinecrop,expLogo=CMS}%
 }
 \DeclareOption{defaulttheme}{%
    \renewcommand*\parenttheme{default}%
    \renewcommand*\parentoptions{}%
 }
 \ExecuteOptions{standardtheme}
+
+%
+% Header Options
+%
+\newif\ifhidestarredsections
+\newcommand*\hidestarredsections{\hidestarredsectionsfalse}
+\DeclareOption{hidestarredsections}{%
+   \hidestarredsectionstrue
+}
+
 \ProcessOptions*
 \LoadClass{beamer}
 \usetheme[\parentoptions]{\parenttheme}
 %\useoutertheme{infolines} %sucky design. Rather not use
+
+%%%%%%%%%%%%%%%%%%%%
+% For TexLive 2018 %
+%%%%%%%%%%%%%%%%%%%%
+%https://tex.stackexchange.com/questions/426088/texlive-pretest-2018-beamer-and-subfig-collide
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%
 % LaTeX Modifications %
@@ -78,6 +103,7 @@
 \RequirePackage{standalone}
 \RequirePackage{pdfpages}
 \RequirePackage{tcolorbox}
+%\RequirePackage{chronology} %clashes with the unit command
 
 %%%%%%%%%%
 % Colors %
@@ -123,11 +149,43 @@
 \RequirePackage{setspace}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}% http://ctan.org/pkg/lm
+\RequirePackage{relsize}
+\RequirePackage{hanging}
+\RequirePackage{anyfontsize}
+\RequirePackage{soul}
 
 %%%%%%%%%%%%%%%%
 % Environments %
 %%%%%%%%%%%%%%%%
+\RequirePackage{varwidth}
 \RequirePackage{listings}
+\lstset{ %
+    backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+    basicstyle=\scriptsize,          % the size of the fonts that are used for the code
+    breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                 % sets automatic line breaking
+    captionpos=b,                    % sets the caption-position to bottom
+    commentstyle=\color{mymauve},    % comment style
+    deletekeywords={...},            % if you want to delete keywords from the given language
+    escapeinside={^}{^},             % if you want to add LaTeX within your code
+    extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    frame=none,                    % adds a frame around the code
+    keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+    keywordstyle=\color{blue},       % keyword style
+    language=C++,                    % the language of the code
+    morekeywords={*,...},            % if you want to add more keywords to the set
+    numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=5pt,                   % how far the line-numbers are from the code
+    numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+    rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+    showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+    showstringspaces=false,          % underline spaces within strings only
+    showtabs=false,                  % show tabs within strings adding particular underscores
+    stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+    stringstyle=\color{mymauve},     % string literal style
+    tabsize=2,                       % sets default tabsize to 2 spaces
+    title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
 \RequirePackage{shadowtext}
 \RequirePackage{fancyvrb}
 \RequirePackage{environ}% defines `NewEnviron`
@@ -248,10 +306,25 @@
 \RequirePackage{aas_macros} %AAS Abbreviations
 \RequirePackage{datetime}
 \RequirePackage{calc}% http://ctan.org/pkg/calc
+\RequirePackage{bm}
+
+%%%%%%%%%%%%%%%%%
+% Define Colors %
+%%%%%%%%%%%%%%%%%
+\definecolor{Blue}{RGB}{50,0,255}
+\definecolor{Yellow}{RGB}{205,173,0}%gold3
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkblue}{rgb}{0,0,0.5}
+\definecolor{maroon}{RGB}{128,0,0}
+\definecolor{envblue}{RGB}{0,51,153}
+\definecolor{envgreen}{RGB}{0,102,0}
+\definecolor{envorange}{RGB}{255,102,0}
 
 %%%%%%%%%%%%%%%%
 % New Commands %
 %%%%%%%%%%%%%%%%
+\newcommand\cpp{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\relsize{-3}{\textbf{++}}}\xspace}
 \newcommand{\datedsection}[2]{%
 \section[#1]{#1 \hfill #2}%
 }
@@ -291,12 +364,6 @@
 \newcommand{\xmark}{\ding{55}}%
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
 \newcolumntype{C}{>{\centering\arraybackslash}X}%
-\definecolor{Blue}{RGB}{50,0,255}
-\definecolor{Yellow}{RGB}{205,173,0}%gold3
-\definecolor{darkred}{rgb}{0.5,0,0}
-\definecolor{darkgreen}{rgb}{0,0.5,0}
-\definecolor{darkblue}{rgb}{0,0,0.5}
-\definecolor{maroon}{RGB}{128,0,0}
 \newcommand{\element}[1]
            {
              {#1}
@@ -318,6 +385,23 @@
   \includegraphics[width=\paperwidth,height=0.94\paperheight]{#1}
   \end{textblock}
 }
+\newcommand{\lenitem}[2][.6\linewidth]{\vspace*{-2pt}\parbox[t]{#1}{\strut #2\strut}}
+\DeclareRobustCommand{\legendsquare}[1]{%
+  \textcolor{#1}{\rule{1.65ex}{1.65ex}}%
+}
+\newenvironment<>{blueblock}[1]{%
+  \setbeamercolor{block title example}{fg=white,bg=envblue!100!white}%
+  \setbeamercolor{block body example}{fg=black,bg=envblue!50!white}%
+  \begin{exampleblock}{#1}}{\end{exampleblock}}
+\newenvironment<>{greenblock}[1]{%
+  \setbeamercolor{block title example}{fg=white,bg=envgreen!100!white}%
+  \setbeamercolor{block body example}{fg=black,bg=envgreen!50!white}%
+  \begin{exampleblock}{#1}}{\end{exampleblock}}
+\newenvironment<>{orangeblock}[1]{%
+  \setbeamercolor{block title example}{fg=black,bg=envorange!50!white}%
+  \setbeamercolor{block body example}{fg=black,bg=envorange!30!white}%
+  \begin{exampleblock}{#1}}{\end{exampleblock}}
+\newcommand*{\myalign}[2]{\multicolumn{1}{#1}{#2}}
           
 %%%%%%%%%%%%%%%%%%%%%%
 % Redefined Commands %
@@ -491,7 +575,7 @@
 }
 \makeatother
 
-
+%https://stackoverflow.com/questions/2611276/latex-beamer-way-to-change-the-bullet-indentation
 %Defining a customlist environment
 % The shortcomings of the list solution can be ameliorated by defining a new customlist environment that
 %   basically redefines the itemize environment from Beamer but also incorporates the \leftmargin and
@@ -500,6 +584,7 @@
 %   \begin{customlist}{2.5em}{0em}
 %      \item Any normal item can go here.
 %   \end{customlist}
+% Default lengths {2em}{0.3em}
 \makeatletter
 \newenvironment{customlist}[2]{
   \ifnum\@itemdepth >2\relax\@toodeep\else
@@ -529,3 +614,29 @@
 }
 \makeatother
 
+
+% Define commands to turn on and off the additions of new miniframes
+%   In the CU theme these get added to the headline as new subsection slide bubbles
+% This helps in making sure that, for example, the backup slides are not added to the last section,
+%  especially when the backup section is hidden
+\makeatletter
+\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+\def\beamer@writeslidentry@miniframesoff{%
+  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+  {%else
+    % removed \addtocontents commands
+    \clearpage\beamer@notesactions%
+  }
+}
+\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+\makeatother
+
+
+% Define commands to hide the starred sections from the beamer headline
+% Will be turned on if \hidestarredsectionstrue is set (as opposed to \hidestarredsectionsfalse)
+\ifhidestarredsections
+\makeatletter
+\long\def\beamer@@ssection*#1{\beamer@section[]{}}
+\makeatother
+\fi

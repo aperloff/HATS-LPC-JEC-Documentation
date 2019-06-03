@@ -1,0 +1,70 @@
+%\PassOptionsToPackage{usenames,dvipsnames}{xcolor}
+\documentclass[compress,10pt,usenames,dvipsnames]{Presentation} % Add notesonly option to print the notes in each frame
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[HATS\@LPC]{HATS@LPC} %\title[short title]{title}
+\subtitle[Pileup \& JEC]{Pileup and Jet Energy Corrections in CMS} %\subtitle[short subtitle]{subtitle}
+\author[A. Perloff]{Kevin Pedro\inst{1}, \textbf{Alexx Perloff\inst{2}}, Cristina Mantilla Suarez\inst{3}, David Yu\inst{4}} % \author[A. Perloff]{Alexx Perloff}
+\institute[TAMU]
+{
+\begin{center}
+  \inst{1}%
+  Fermilab\\
+  \inst{2}%
+  University of Colorado Boulder\\
+  \inst{3}%
+  Johns Hopkins University\\
+  \inst{4}%
+  Brown University
+\end{center}
+}
+\newdate{date}{04}{06}{2018}
+\usdate
+\date{\dayofweekname{04}{06}{2018}, \displaydate{date}}
+%\date{\displaydate{date}}
+%\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\newlength{\residualSpace}
+
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}[t]
+    \titlepage
+    \begin{textblock}{0.96}(0.02,0.7)
+    	\scriptsize Using previous slides from: Jim Dolen, Mike Hildreth, Julie Hogan, Ben Kreis, Scarlet Norberg, Alexx Perloff, Justin Pilot, Nhan Tran\\
+    	\href{https://indico.cern.ch/event/815121/}{https://indico.cern.ch/event/815121/}\\
+    	\href{https://github.com/cms-jet/JMEDAS/tree/HATS2019}{https://github.com/cms-jet/JMEDAS/tree/HATS2019}
+    \end{textblock}
+\end{frame}
+}
+
+\section{Pileup}
+\label{sec:pileup}
+\input{Sections/pileup}
+\input{Sections/pileup_reweighting}
+\input{Sections/pileup_mitigation}
+\input{Sections/rethinking_pileup}
+\input{Sections/pileup_summary}
+
+\section{Jet Energy Corrections}
+\label{sec:jet_energy_corrections}
+\input{Sections/introduction-jec}
+\input{Sections/analysis_requirements}
+\input{Sections/technical}
+\input{Sections/user_software}
+\input{Sections/conclusion}
+
+%\section{Hands-On}
+%\label{sec:hands_on}
+%\input{Sections/hands_on}
+
+\miniframesoff
+%\section*{Backup}
+\label{sec:backup}
+\input{Sections/backup}
+
+\end{document}

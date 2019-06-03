@@ -1,0 +1,72 @@
+%\PassOptionsToPackage{usenames,dvipsnames}{xcolor}
+\documentclass[compress,10pt,usenames,dvipsnames]{Presentation} % Add notesonly option to print the notes in each frame
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[HATS\@LPC]{HATS@LPC} %\title[short title]{title}
+\subtitle[Pileup \& JEC]{Pileup and Jet Energy Corrections in CMS} %\subtitle[short subtitle]{subtitle}
+\author[A. Perloff]{Dan Marley\inst{1}, Scarlet Norberg\inst{2}, Alexx Perloff\inst{3}, Justin Pilot\inst{4}, and Nhan Tran\inst{5}} % \author[A. Perloff]{Alexx Perloff}
+\institute[TAMU]
+{
+\begin{center}
+  \inst{1}%
+  Texas A{\&}M University\\
+  \inst{2}%
+  University of Puerto Rico Mayaguez\\
+  \inst{3}%
+  University of Colorado Boulder\\
+  \inst{4}%
+  University of California Davis\\
+  \inst{5}%
+  Fermilab\\
+
+\end{center}
+}
+\newdate{date}{13}{06}{2018}
+\usdate
+\date{\dayofweekname{13}{06}{2018}, \displaydate{date}}
+%\date{\displaydate{date}}
+%\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\newlength{\residualSpace}
+
+{
+\setbeamertemplate{footline}{} 
+\frame {
+    \titlepage
+    \includegraphics[width=0.5in]{images/TAMULogoMaroonBox.jpg}\hspace{0.44in}\includegraphics[width=0.5in]{images/UCDavisLogo.png}\hspace{0.44in}\includegraphics[width=0.5in]{images/UPRMLogo.jpg}\hspace{0.44in}\includegraphics[width=2.0in]{images/FNAL-Logo-NAL-Blue.pdf}\hspace{0.97in}
+}
+}
+
+\section{Introduction}
+\label{sec:introduction}
+\input{Sections/introduction}
+
+\section{Analysis Requirements}
+\label{sec:analysis}
+\input{Sections/analysis_requirements}
+
+\section{Technical}
+\label{sec:technical}
+\input{Sections/technical}
+
+\section{User Software}
+\label{sec:user_software}
+\input{Sections/user_software}
+
+\section{Conclusion}
+\label{sec:conclusion}
+\input{Sections/conclusion}
+
+%\section{Hands-On}
+%\label{sec:hands_on}
+%\input{Sections/hands_on}
+
+%\section*{Backup}
+%\label{sec:backup}
+%\input{Sections/backup}
+
+\end{document}
